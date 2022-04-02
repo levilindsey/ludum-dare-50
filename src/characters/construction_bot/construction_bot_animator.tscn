@@ -285,6 +285,7 @@ tracks/0/keys = {
 z_index = 2
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_horizontal_guides_": [  ],
 "_edit_lock_": true
 }
 animations = {
@@ -342,7 +343,7 @@ animations = {
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, -15 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 2 )
 hframes = 8
 
@@ -363,7 +364,8 @@ texture = ExtResource( 4 )
 hframes = 2
 
 [node name="Rest" type="Sprite" parent="."]
-position = Vector2( 0, -15 )
+visible = false
+position = Vector2( 0, -16 )
 texture = ExtResource( 7 )
 hframes = 8
 
@@ -392,6 +394,7 @@ texture = ExtResource( 6 )
 hframes = 2
 
 [node name="RESET" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ClimbDown = SubResource( 1 )
