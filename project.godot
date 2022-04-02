@@ -209,7 +209,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/character/character_animation_state.gd"
 }, {
-"base": "Reference",
+"base": "CheckboxControlRow",
 "class": "CharacterAnnotatorControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/settings/character_annotator_control_row.gd"
@@ -369,7 +369,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surface_tiler/src/models/connection_direction.gd"
 }, {
-"base": "Reference",
+"base": "ValidEdgeTrajectoryLegendItem",
 "class": "ContinuousEdgeTrajectoryLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/continuous_edge_trajectory_legend_item.gd"
@@ -469,7 +469,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/description_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "DestinationLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/destination_legend_item.gd"
@@ -484,7 +484,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/surfaces_group/destination_surface_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "SurfaceLegendItem",
 "class": "DestinationSurfaceLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/destination_surface_legend_item.gd"
@@ -499,7 +499,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/utils/device_utils.gd"
 }, {
-"base": "Reference",
+"base": "ValidEdgeTrajectoryLegendItem",
 "class": "DiscreteEdgeTrajectoryLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/discrete_edge_trajectory_legend_item.gd"
@@ -704,7 +704,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/surfaces_group/failed_edge_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "FailedEdgeTrajectoryLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/failed_edge_trajectory_legend_item.gd"
@@ -744,7 +744,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/annotators/annotation_elements/fall_range_with_jump_distance_annotation_element.gd"
 }, {
-"base": "Reference",
+"base": "PolylineLegendItem",
 "class": "FallRangeWithJumpDistanceLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/fall_range_with_jump_distance_legend_item.gd"
@@ -754,7 +754,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/annotators/annotation_elements/fall_range_without_jump_distance_annotation_element.gd"
 }, {
-"base": "Reference",
+"base": "PolylineLegendItem",
 "class": "FallRangeWithoutJumpDistanceLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/fall_range_without_jump_distance_legend_item.gd"
@@ -1009,7 +1009,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/hud/hud_key_value_list.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "HypotheticalEdgeTrajectoryLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/hypothetical_edge_trajectory_legend_item.gd"
@@ -1039,12 +1039,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_search_type.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "InstructionEndLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/instruction_end_legend_item.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "InstructionStartLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/instruction_start_legend_item.gd"
@@ -1139,12 +1139,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/surfaces_group/left_walls_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "VBoxContainer",
 "class": "Legend",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/legend.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "LegendItem",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/legend_item.gd"
@@ -1159,7 +1159,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/squirrel_away/src/levels/level8.gd"
 }, {
-"base": "Reference",
+"base": "CheckboxControlRow",
 "class": "LevelAnnotatorControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/settings/level_annotator_control_row.gd"
@@ -1329,12 +1329,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/control_rows/npc/npc_slow_mo_trajectory_annotator_control_row.gd"
 }, {
-"base": "Reference",
+"base": "TransientAnnotator",
 "class": "OnBeatHashAnnotator",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/annotators/transient_annotators/on_beat_hash_annotator.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "OriginLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/origin_legend_item.gd"
@@ -1349,7 +1349,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/surfaces_group/origin_surface_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "SurfaceLegendItem",
 "class": "OriginSurfaceLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/origin_surface_legend_item.gd"
@@ -1494,7 +1494,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/annotators/annotation_elements/polyline_annotation_element.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "PolylineLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/polyline_legend_item.gd"
@@ -1559,7 +1559,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surface_tiler/src/plugin/recalculate_tileset_custom_property.gd"
 }, {
-"base": "Reference",
+"base": "CheckboxControlRow",
 "class": "RecentMovementAnnotatorControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/displays/recent_movement_annotator_control_row.gd"
@@ -1594,7 +1594,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/ruler_annotator.gd"
 }, {
-"base": "Reference",
+"base": "CheckboxControlRow",
 "class": "RulerAnnotatorControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/displays/ruler_annotator_control_row.gd"
@@ -1619,12 +1619,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/scaffolder_annotators.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "ScaffolderAppMetadata",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/global/scaffolder_app_metadata.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "ScaffolderAudioManifest",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/global/scaffolder_audio_manifest.gd"
@@ -1654,7 +1654,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/character/scaffolder_character_category.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "ScaffolderCharacterManifest",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/global/scaffolder_character_manifest.gd"
@@ -1704,7 +1704,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/utils/scaffolder_geometry.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "ScaffolderGuiConfig",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/global/scaffolder_gui_config.gd"
@@ -1719,7 +1719,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/hud/scaffolder_hud.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "ScaffolderImages",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/global/scaffolder_images.gd"
@@ -1809,7 +1809,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/character/scaffolder_spawn_position.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "ScaffolderStyles",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/global/scaffolder_styles.gd"
@@ -1974,7 +1974,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/squirrel_away/src/gui/squirrel_away_loading_image.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "SquirrelAwayMain",
 "language": "GDScript",
 "path": "res://addons/squirrel_away/src/global/squirrel_away_main.gd"
@@ -2104,7 +2104,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/platform_graph/surface/surface_finder.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "SurfaceLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/surface_legend_item.gd"
@@ -2189,7 +2189,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/utils/surfacer_beat_tracker.gd"
 }, {
-"base": "Reference",
+"base": "FrameworkBootstrap",
 "class": "SurfacerBootstrap",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/global/surfacer_bootstrap.gd"
@@ -2294,7 +2294,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/config/surfacer_metadata.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "SurfacerMovementManifest",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/global/surfacer_movement_manifest.gd"
@@ -2344,7 +2344,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/surfaces_group/surfaces_of_side_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "CornerMatchTilemap",
 "class": "SurfacesTilemap",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/tiles/surfaces_tilemap.gd"
@@ -2474,7 +2474,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/valid_edge_item_controller.gd"
 }, {
-"base": "Reference",
+"base": "LegendItem",
 "class": "ValidEdgeTrajectoryLegendItem",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/valid_edge_trajectory_legend_item.gd"
@@ -2973,7 +2973,7 @@ _global_script_class_icons={
 "SquirrelAwayLevelConfig": "",
 "SquirrelAwayLevelSession": "",
 "SquirrelAwayLoadingImage": "",
-"SquirrelAwayMain": "",
+"SquirrelAwayMain": "res://addons/scaffolder/assets/images/editor_icons/star.png",
 "SquirrelAwayMetadata": "",
 "SquirrelAwayPlugin": "",
 "SquirrelAwaySchema": "",
@@ -3047,7 +3047,7 @@ _global_script_class_icons={
 "SurfacesAnnotatorControlRow": "",
 "SurfacesGroupItemController": "",
 "SurfacesOfSideGroupItemController": "",
-"SurfacesTilemap": "",
+"SurfacesTilemap": "res://addons/surfacer/assets/images/editor_icons/surfaces_tilemap.png",
 "SurfacesTileset": "",
 "SurfacesTilesetInitializer": "",
 "TestCharacter": "",
@@ -3098,7 +3098,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Bootstrapper"
+config/name="Ludum Dare 50"
 run/main_scene="res://src/global/main.tscn"
 boot_splash/image="res://addons/scaffolder/assets/images/logos/godot_logo_splash.png"
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )

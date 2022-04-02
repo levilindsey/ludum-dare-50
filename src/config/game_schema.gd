@@ -30,8 +30,8 @@ var _metadata := {
     are_button_controls_enabled_by_default = false,
     base_path = "",
     
-    app_name = "Bootstrapper",
-    app_id = "dev.levi.bootstrapper",
+    app_name = "Ludum Dare 50",
+    app_id = "dev.levi.ludum-dare-50",
     app_version = "0.0.1",
     score_version = "0.0.1",
     data_agreement_version = "0.0.1",
