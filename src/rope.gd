@@ -2,13 +2,12 @@ class_name Rope
 extends Reference
 
 
-const NUMBER_OF_PHYSICS_FRAMES_BETWEEN_NODE_PHYSICS_FRAMES := 2
-const NUMBER_OF_NEIGHBOR_CONSTRAINT_UPDATE_ITERATIONS_PER_FRAME := 50
-const NODE_SOLVER_ITERATIONS := 20
+const NUMBER_OF_PHYSICS_FRAMES_BETWEEN_NODE_PHYSICS_FRAMES := 1
+const NUMBER_OF_NEIGHBOR_CONSTRAINT_UPDATE_ITERATIONS_PER_FRAME := 10
 const ROPE_LENGTH_TO_DISTANCE_RATIO := 0.4
 const NODE_MASS := 0.8
-const NODE_DAMPING := 0.5
-const DISTANCE_BETWEEN_NODES := 2.0
+const NODE_DAMPING := 0.7
+const DISTANCE_BETWEEN_NODES := 4.0
 
 var distance: float
 var node_count: int
@@ -29,9 +28,9 @@ func _init(distance: float) -> void:
 
 func _initialize_nodes() -> void:
     self.node_count = \
-        distance * \
-        ROPE_LENGTH_TO_DISTANCE_RATIO / \
-        DISTANCE_BETWEEN_NODES
+            distance * \
+            ROPE_LENGTH_TO_DISTANCE_RATIO / \
+            DISTANCE_BETWEEN_NODES
     assert(node_count > 2)
     
     nodes = []
