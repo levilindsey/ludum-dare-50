@@ -230,6 +230,15 @@ var _gui_manifest := {
             SurfaceTilerThirdPartyLicenses.TEXT + \
             ScaffolderThirdPartyLicenses.TEXT + \
             SurfacerThirdPartyLicenses.TEXT,
+    
+    main_menu_image_scale = 1.0,
+    game_over_image_scale = 0.5,
+    loading_image_scale = 0.5,
+    
+    main_menu_image_scene = preload("res://src/gui/loading_image.tscn"),
+    game_over_image_scene = preload("res://src/gui/loading_image.tscn"),
+    loading_image_scene = preload("res://src/gui/loading_image.tscn"),
+    
     settings_item_manifest = {
         groups = {
             annotations = {
@@ -266,14 +275,14 @@ var _gui_manifest := {
 
 var _character_scenes := [
     preload("res://src/characters/test_character/test_character.tscn"),
-    preload("res://src/characters/test_character2/test_character2.tscn"),
+    preload("res://src/characters/construction_bot/construction_bot.tscn"),
 ]
 
 var _character_categories := [
 ]
 
 var _character_manifest := {
-    default_character_name = "test_character",
+    default_character_name = "construction_bot",
     character_scenes = _character_scenes,
     character_categories = _character_categories,
     omits_npcs = false,

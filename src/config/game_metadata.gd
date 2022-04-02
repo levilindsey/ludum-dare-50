@@ -11,7 +11,7 @@ const AUTO_LOAD_PATH := "res://src/global/game_global.gd"
 const PLUGIN_ICON_PATH_PREFIX := \
         "res://addons/scaffolder/assets/images/editor_icons/plugin/star"
 const SCHEMA_PATH := "res://src/config/game_schema.gd"
-const MANIFEST_PATH_OVERRIDE := "res://src/global/manifest.json"
+const MANIFEST_PATH_OVERRIDE := "res://src/config/manifest.json"
 const METRIC_KEYS := [
 ]
 const MODES := {}

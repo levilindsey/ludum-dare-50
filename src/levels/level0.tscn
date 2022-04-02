@@ -30,8 +30,8 @@ id = "0_inner"
 [node name="IntroChoreographyDestination" type="Position2D" parent="." groups=["intro_choreography_destination"]]
 
 [node name="SurfacerSpawnPosition" parent="." instance=ExtResource( 4 )]
-character_name = "test_character"
-character_name = "test_character"
+character_name = "construction_bot"
+character_name = "construction_bot"
 
 [node name="SurfaceEnablement" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0, 1, 0.0999999, 0.7 )
