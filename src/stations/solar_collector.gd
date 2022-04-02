@@ -1,6 +1,6 @@
 tool
 class_name SolarCollector
-extends Node2D
+extends Station
 
 
 func _ready() -> void:

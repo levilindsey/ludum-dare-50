@@ -57,5 +57,4 @@ rect_min_size = Vector2( 256, 256 )
 frames = SubResource( 9 )
 original_frame_size = Vector2( 32, 32 )
 texture_scale = 8.0
-flip_h = true
-frame = 1
+frame = 4

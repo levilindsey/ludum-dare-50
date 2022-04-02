@@ -38,8 +38,14 @@ character_name = "construction_bot"
 modulate = Color( 0, 1, 0.0999999, 0.7 )
 character_categories = 0
 
-[node name="CommandCenter" parent="." instance=ExtResource( 8 )]
+[node name="PowerLines" type="Node2D" parent="."]
+z_index = 3
+
+[node name="Stations" type="Node2D" parent="."]
+z_index = 1
+
+[node name="CommandCenter" parent="Stations" instance=ExtResource( 8 )]
 position = Vector2( 96, 64 )
 
-[node name="SolarCollector" parent="." instance=ExtResource( 9 )]
+[node name="SolarCollector" parent="Stations" instance=ExtResource( 9 )]
 position = Vector2( 160, -320 )

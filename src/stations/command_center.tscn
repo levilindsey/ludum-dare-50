@@ -133,9 +133,10 @@ animations = [ {
 
 [node name="CommandCenter" type="Node2D"]
 script = ExtResource( 1 )
+rope_attachment_offset = Vector2( 0, -36 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 31 )
-frame = 15
+frame = 13
 playing = true

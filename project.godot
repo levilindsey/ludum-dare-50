@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/character/behaviors/behavior_move_result.gd"
 }, {
+"base": "SurfacerCharacter",
+"class": "Bot",
+"language": "GDScript",
+"path": "res://src/characters/bot.gd"
+}, {
 "base": "CheckboxControlRow",
 "class": "ButtonControlsControlRow",
 "language": "GDScript",
@@ -354,7 +359,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/config/color_config/color_palette.gd"
 }, {
-"base": "Node2D",
+"base": "Station",
 "class": "CommandCenter",
 "language": "GDScript",
 "path": "res://src/stations/command_center.gd"
@@ -374,7 +379,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surface_tiler/src/models/connection_direction.gd"
 }, {
-"base": "SurfacerCharacter",
+"base": "Bot",
 "class": "ConstructionBot",
 "language": "GDScript",
 "path": "res://src/characters/construction_bot/construction_bot.gd"
@@ -523,6 +528,11 @@ _global_script_classes=[ {
 "class": "DummyItemController",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/dummy_controller.gd"
+}, {
+"base": "PowerLine",
+"class": "DynamicPowerLine",
+"language": "GDScript",
+"path": "res://src/dynamic_power_line.gd"
 }, {
 "base": "EdgeAttempt",
 "class": "Edge",
@@ -1519,6 +1529,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/platform_graph/edge/utils/position_along_surface_factory.gd"
 }, {
+"base": "Node2D",
+"class": "PowerLine",
+"language": "GDScript",
+"path": "res://src/power_line.gd"
+}, {
 "base": "Screen",
 "class": "PrecomputePlatformGraphsScreen",
 "language": "GDScript",
@@ -1593,6 +1608,11 @@ _global_script_classes=[ {
 "class": "RightWallsItemController",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/surfaces_group/right_walls_item_controller.gd"
+}, {
+"base": "Reference",
+"class": "Rope",
+"language": "GDScript",
+"path": "res://src/rope.gd"
 }, {
 "base": "Reference",
 "class": "RotatedShape",
@@ -1929,7 +1949,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/utils/time/slow_motion_music.gd"
 }, {
-"base": "Node2D",
+"base": "Station",
 "class": "SolarCollector",
 "language": "GDScript",
 "path": "res://src/stations/solar_collector.gd"
@@ -2039,10 +2059,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/config/color_config/static_color_config.gd"
 }, {
+"base": "PowerLine",
+"class": "StaticPowerLine",
+"language": "GDScript",
+"path": "res://src/static_power_line.gd"
+}, {
 "base": "TextControlRow",
 "class": "StaticTextControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/static_text_control_row.gd"
+}, {
+"base": "Node2D",
+"class": "Station",
+"language": "GDScript",
+"path": "res://src/stations/station.gd"
 }, {
 "base": "Reference",
 "class": "Stopwatch",
@@ -2607,6 +2637,7 @@ _global_script_class_icons={
 "BeatTracker": "",
 "Behavior": "",
 "BehaviorMoveResult": "",
+"Bot": "",
 "ButtonControlsControlRow": "",
 "CameraController": "",
 "CameraPanController": "",
@@ -2693,6 +2724,7 @@ _global_script_class_icons={
 "DiscreteEdgeTrajectoryLegendItem": "",
 "DropdownControlRow": "",
 "DummyItemController": "",
+"DynamicPowerLine": "",
 "Edge": "",
 "EdgeAnnotationElement": "",
 "EdgeAttempt": "",
@@ -2892,6 +2924,7 @@ _global_script_class_icons={
 "PolylineLegendItem": "",
 "PositionAlongSurface": "",
 "PositionAlongSurfaceFactory": "",
+"PowerLine": "",
 "PrecomputePlatformGraphsScreen": "",
 "PriorityQueue": "",
 "Profiler": "",
@@ -2907,6 +2940,7 @@ _global_script_class_icons={
 "ResetButton": "",
 "ReturnBehavior": "",
 "RightWallsItemController": "",
+"Rope": "",
 "RotatedShape": "",
 "RulerAnnotator": "",
 "RulerAnnotatorControlRow": "",
@@ -2996,7 +3030,9 @@ _global_script_class_icons={
 "SquirrelAwayTilemapWithManyAngles": "",
 "StInterface": "",
 "StaticColorConfig": "",
+"StaticPowerLine": "",
 "StaticTextControlRow": "",
+"Station": "",
 "Stopwatch": "",
 "StyleBoxFlatScalable": "",
 "StyleBoxTextureScalable": "",
