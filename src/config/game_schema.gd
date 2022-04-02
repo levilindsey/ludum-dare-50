@@ -311,7 +311,7 @@ var _additive_overrides := {
                         outer_autotile_name = "autotile",
                         inner_autotile_name = "__inner_autotile__",
                         tileset_quadrants_path = \
-                            "res://assets/images/tiles/tileset_quadrants.png",
+                            "res://assets/images/tiles/collidable_tiles.png",
                         tile_corner_type_annotations_path = \
                             "res://assets/images/tiles/tileset_corner_type_annotations.png",
                         subtile_collision_margin = 0.0,
