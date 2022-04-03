@@ -25,6 +25,8 @@ enum {
     STATIC_POWER_LINE_HIT,
     STATION_HIT,
     BOT_HIT,
+    
+    BOT_ALIVE,
 }
 
 
@@ -60,6 +62,8 @@ static func get_string(type: int) -> String:
             return "STATION_HIT"
         BOT_HIT:
             return "BOT_HIT"
+        BOT_ALIVE:
+            return "BOT_ALIVE"
         _:
             Sc.logger.error("OverlayButtonType.get_string")
             return ""

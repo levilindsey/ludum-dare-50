@@ -1279,11 +1279,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/gui/loading_image.gd"
 }, {
-"base": "Screen",
-"class": "LoadingScreen",
-"language": "GDScript",
-"path": "res://addons/surfacer/src/gui/screens/surfacer_loading_screen.gd"
-}, {
 "base": "Control",
 "class": "LockAnimation",
 "language": "GDScript",
@@ -2399,6 +2394,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/level/surfacer_level_session.gd"
 }, {
+"base": "Screen",
+"class": "SurfacerLoadingScreen",
+"language": "GDScript",
+"path": "res://addons/surfacer/src/gui/screens/surfacer_loading_screen.gd"
+}, {
 "base": "FrameworkMetadata",
 "class": "SurfacerMetadata",
 "language": "GDScript",
@@ -2944,7 +2944,6 @@ _global_script_class_icons={
 "LevelSelectScreen": "",
 "LevelSession": "",
 "LoadingImage": "",
-"LoadingScreen": "",
 "LockAnimation": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_placeholder.png",
 "Main": "res://addons/scaffolder/assets/images/editor_icons/star.png",
 "MainMenuScreen": "",
@@ -3168,6 +3167,7 @@ _global_script_class_icons={
 "SurfacerLevel": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_level.png",
 "SurfacerLevelConfig": "",
 "SurfacerLevelSession": "",
+"SurfacerLoadingScreen": "",
 "SurfacerMetadata": "",
 "SurfacerMovementManifest": "",
 "SurfacerPlugin": "",

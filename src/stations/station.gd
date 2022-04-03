@@ -14,6 +14,11 @@ var collision_shape: CollisionShape2D
 
 var health := 1.0
 
+# Dictionary<Station, bool>
+var connections := {}
+
+var is_connected_to_command_center := false
+
 
 func _ready() -> void:
     self.collision_shape = Sc.utils.get_child_by_type(self, CollisionShape2D)
@@ -77,15 +82,9 @@ func get_position_along_surface(
             true)
 
 
-# Dictionary<Station, bool>
-var connections := {}
-
-var is_connected_to_command_center := false
-
-
 func add_connection(other_station: Station) -> void:
     if connections.has(other_station):
-        Sc.warning("Station.add_connection")
+        Sc.logger.warning("Station.add_connection")
         return
     connections[other_station] = true
     _check_is_connected_to_command_center()
@@ -93,7 +92,7 @@ func add_connection(other_station: Station) -> void:
 
 func remove_connection(other_station: Station) -> void:
     if !connections.has(other_station):
-        Sc.warning("Station.remove_connection")
+        Sc.logger.warning("Station.remove_connection")
         return
     connections.erase(other_station)
     _check_is_connected_to_command_center()

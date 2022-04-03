@@ -20,6 +20,18 @@ var level_manifest := {
         ],
         cell_size = Vector2(32.0, 32.0),
     },
+    "1": {
+        name = "Level 2",
+        version = "0.0.1",
+        is_test_level = false,
+        sort_priority = 20,
+        unlock_conditions = "unlocked",
+        scene_path = LEVELS_PATH_PREFIX + "level1.tscn",
+        platform_graph_character_category_names = [
+            "construction_bot",
+        ],
+        cell_size = Vector2(32.0, 32.0),
+    },
 #    "1": {
 #        name = "Foo",
 #        version = "0.0.1",

@@ -6,6 +6,8 @@ extends SurfacerCharacter
 const _LIGHT_TEXTURE := preload(
         "res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png")
 
+const CONSTANT_ENERGY_DRAIN_PERIOD := 0.4
+
 export var rope_attachment_offset := Vector2.ZERO
 
 var held_power_line: DynamicPowerLine
@@ -28,6 +30,12 @@ var is_active := false
 var is_powered_on := true
 var is_stopping := false
 
+var start_time := INF
+var total_time := INF
+
+var movement_distance_per_one_enery_value := 20.0
+var total_movement_distance_cost := 0.0
+
 
 func _init() -> void:
     self.light = Light2D.new()
@@ -37,6 +45,8 @@ func _init() -> void:
     light.range_layer_max = 100
     add_child(light)
     _update_status()
+    start_time = Sc.time.get_scaled_play_time()
+    total_time = 0.0
 
 
 func _ready() -> void:
@@ -46,11 +56,10 @@ func _ready() -> void:
             "navigation_interrupted", self, "_on_navigation_interrupted")
 
 
-var movement_distance_per_one_enery_value := 40.0
-var total_movement_distance_cost := 0.0
-
-
 func _physics_process(delta: float) -> void:
+    var previous_total_time := total_time
+    total_time = Sc.time.get_scaled_play_time() - start_time
+    
     if surface_state.just_left_air and \
             is_stopping:
         _stop_nav()
@@ -65,6 +74,10 @@ func _physics_process(delta: float) -> void:
             int(total_movement_distance_cost / \
             movement_distance_per_one_enery_value):
         Sc.level.deduct_energy_for_action(OverlayButtonType.MOVE)
+    
+    if int(previous_total_time / CONSTANT_ENERGY_DRAIN_PERIOD) != \
+            int(total_time / CONSTANT_ENERGY_DRAIN_PERIOD):
+        Sc.level.deduct_energy_for_action(OverlayButtonType.BOT_ALIVE)
 
 
 func _unhandled_input(event: InputEvent) -> void:

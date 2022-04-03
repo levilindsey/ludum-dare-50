@@ -26,13 +26,13 @@ func run() -> void:
     if is_large:
         $Large.visible = true
         $Small.visible = false
-        $CollisionShape2D.radius = 16.0
+        $CollisionShape2D.shape.radius = 16.0
     else:
         $Large.visible = false
         $Small.visible = true
-        $CollisionShape2D.radius = 8.0
+        $CollisionShape2D.shape.radius = 8.0
     
-    var rotation := randf() * 1.0/6.0 - 1.0/12.0
+    var rotation := PI * (randf() * 1.0/6.0 - 1.0/12.0)
     velocity = Vector2.DOWN.rotated(rotation)
     
     var speed := DEFAULT_SPEED * (1.0 + randf() * 0.2 - 0.1)
@@ -52,22 +52,24 @@ func _physics_process(delta: float) -> void:
 
 func _on_Meteor_body_entered(body) -> void:
     if body is TileMap:
+#        Sc.logger.print("Meteor hit tilemap")
         _destroy()
 
 
 func _on_Meteor_area_entered(area) -> void:
     if area is Station:
+#        Sc.logger.print("Meteor hit station")
         Sc.level.deduct_energy_for_action(OverlayButtonType.STATION_HIT)
         _destroy()
     elif area.has_meta("PowerLine"):
-        var power_line = area.get_meta("PowerLine", self)
+#        Sc.logger.print("Meteor hit power-line")
+        var power_line = area.get_meta("PowerLine")
         power_line._on_hit_by_meteor()
-        _destroy()
-    elif area is TileMap:
         _destroy()
 
 
 func _on_collided_with_bot(bot) -> void:
+    Sc.logger.print("Meteor hit bot")
     Sc.level.deduct_energy_for_action(OverlayButtonType.BOT_HIT)
     _destroy()
 

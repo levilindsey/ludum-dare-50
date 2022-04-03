@@ -10,6 +10,31 @@ const _EMPTY_STATION_SCENE := preload("res://src/stations/empty_station.tscn")
 const _SOLAR_COLLECTOR_SCENE := preload(
         "res://src/stations/solar_collector.tscn")
 
+
+const ENERGY_COST_PER_BUTTON := {
+    OverlayButtonType.MOVE: 1,
+    OverlayButtonType.DESTROY: 10,
+    
+    OverlayButtonType.RUN_WIRE: 40,
+    
+    OverlayButtonType.COMMAND_CENTER: 500,
+    OverlayButtonType.SOLAR_COLLECTOR: 300,
+    OverlayButtonType.SCANNER_STATION: 500,
+    OverlayButtonType.BATTERY_STATION: 500,
+    
+    OverlayButtonType.BUILD_CONSTRUCTOR_BOT: 800,
+    OverlayButtonType.BUILD_LINE_RUNNER_BOT: 1000,
+    OverlayButtonType.BUILD_REPAIR_BOT: 1000,
+    OverlayButtonType.BUILD_BARRIER_BOT: 1000,
+    
+    OverlayButtonType.DYNAMIC_POWER_LINE_HIT: 100,
+    OverlayButtonType.STATIC_POWER_LINE_HIT: 80,
+    OverlayButtonType.STATION_HIT: 120,
+    OverlayButtonType.BOT_HIT: 150,
+    
+    OverlayButtonType.BOT_ALIVE: 1,
+}
+
 var bot_selector: BotSelector
 
 var command_center: CommandCenter
@@ -62,6 +87,17 @@ func _start() -> void:
     
     meteor_controller = MeteorController.new()
     self.add_child(meteor_controller)
+    
+    _override_for_level()
+
+
+func _override_for_level() -> void:
+    if level_id == "0":
+        pass
+    elif level_id == "1":
+        pass
+    else:
+        Sc.logger.error("GameLevel._override_for_level")
 
 
 func _destroy() -> void:
@@ -99,29 +135,6 @@ func _on_bot_selection_changed(selected_bot) -> void:
         station._on_bot_selection_changed(selected_bot)
     for bot in bots:
         bot.set_is_selected(bot == selected_bot)
-
-
-const ENERGY_COST_PER_BUTTON := {
-    OverlayButtonType.MOVE: 1,
-    OverlayButtonType.DESTROY: 10,
-    
-    OverlayButtonType.RUN_WIRE: 20,
-    
-    OverlayButtonType.COMMAND_CENTER: 500,
-    OverlayButtonType.SOLAR_COLLECTOR: 200,
-    OverlayButtonType.SCANNER_STATION: 500,
-    OverlayButtonType.BATTERY_STATION: 500,
-    
-    OverlayButtonType.BUILD_CONSTRUCTOR_BOT: 800,
-    OverlayButtonType.BUILD_LINE_RUNNER_BOT: 1000,
-    OverlayButtonType.BUILD_REPAIR_BOT: 1000,
-    OverlayButtonType.BUILD_BARRIER_BOT: 1000,
-    
-    OverlayButtonType.DYNAMIC_POWER_LINE_HIT: 20,
-    OverlayButtonType.STATIC_POWER_LINE_HIT: 10,
-    OverlayButtonType.STATION_HIT: 50,
-    OverlayButtonType.BOT_HIT: 70,
-}
 
 
 func deduct_energy_for_action(button_type: int) -> void:
@@ -252,6 +265,7 @@ func replace_station(
     var new_station := Sc.utils.add_scene($Stations, station_scene)
     new_station.position = station_position
     _on_station_created(new_station)
+
 
 func add_station(station: Station) -> void:
     $Stations.add_child(station)

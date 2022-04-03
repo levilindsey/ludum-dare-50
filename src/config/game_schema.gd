@@ -30,7 +30,7 @@ var _metadata := {
     are_button_controls_enabled_by_default = false,
     base_path = "",
     
-    app_name = "Ludum Dare 50",
+    app_name = "Meteor Power",
     app_id = "dev.levi.ludum-dare-50",
     app_version = "0.0.1",
     score_version = "0.0.1",
@@ -292,6 +292,16 @@ var _gui_manifest := {
             },
         },
     },
+    pause_item_manifest = [
+        TotalEnergyControlRow,
+        CurrentEnergyControlRow,
+    ],
+    game_over_item_manifest = [
+        TotalEnergyControlRow,
+    ],
+    level_select_item_manifest = [
+        TotalEnergyControlRow,
+    ],
     hud_manifest = {
         hud_class = Hud,
         hud_key_value_box_size = Vector2(256.0, 48.0),

@@ -23,6 +23,7 @@ var health := 1.0
 var _vertices := []
 
 var collision_area: Area2D
+var shape: SegmentShape2D
 
 
 func _init(
@@ -44,9 +45,7 @@ func _create_collision_area() -> void:
     collision_area.monitoring = false
     collision_area.monitorable = true
     var collision_shape := CollisionShape2D.new()
-    var shape := SegmentShape2D.new()
-    shape.a
-    shape.b
+    self.shape = SegmentShape2D.new()
     collision_shape.shape = shape
     collision_area.add_child(collision_shape)
     self.add_child(collision_area)
@@ -56,6 +55,9 @@ func _draw_polyline() -> void:
     # FIXME: Base color on health?
     var color := ROPE_COLOR
     var width := ROPE_WIDTH
+    
+    shape.a = _vertices[0]
+    shape.b = _vertices[_vertices.size() - 1]
     
     draw_polyline(_vertices, Color.black, width * 2)
     Sc.draw.draw_dashed_polyline(

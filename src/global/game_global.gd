@@ -106,6 +106,7 @@ func _get_manifest_overrides() -> Array:
         
         ["Su.manifest.precompute_platform_graph_for_levels", [
 #            "0",
+#            "1",
         ]],
         ["Su.manifest.ignores_platform_graph_save_files", false],
         

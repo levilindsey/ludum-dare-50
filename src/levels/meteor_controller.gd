@@ -27,19 +27,19 @@ extends Node2D
 # - Add better level and playtest.
 # - Check notes
 
-const METEOR_CLASS := preload("res://src/levels/meteor.tscn")
+var METEOR_CLASS := preload("res://src/levels/meteor.tscn")
 
-const WAVE_PERIOD := 60.0
-const WAVE_DURATION_START := 5.0
-const WAVE_DURATION_DELTA := 5.0
+var WAVE_PERIOD := 40.0
+var WAVE_DURATION_START := 10.0
+var WAVE_DURATION_DELTA := 10.0
 
-const METEOR_WAVE_FREQUENCY_START := 0.2
-const METEOR_WAVE_FREQUENCY_DELTA := 0.05
+var METEOR_WAVE_FREQUENCY_START := 1.6
+var METEOR_WAVE_FREQUENCY_MULTIPLIER := 1.5
 
-const NON_WAVE_METEOR_FREQUENCY_START := 0.005
-const NON_WAVE_METEOR_FREQUENCY_DELTA := 0.0005
+var NON_WAVE_METEOR_FREQUENCY_START := 0.6
+var NON_WAVE_METEOR_FREQUENCY_MULTIPLIER := 2.0
 
-const LARGE_METEOR_RATIO := 0.1
+var LARGE_METEOR_RATIO := 0.2
 
 var is_in_wave := false
 
@@ -58,6 +58,7 @@ var level_region: Rect2
 func _init() -> void:
     start_time = Sc.time.get_scaled_play_time()
     level_region = Sc.level.get_combined_tile_map_region()
+    next_wave_start_time = start_time + WAVE_PERIOD
 
 
 func _physics_process(delta: float) -> void:
@@ -74,7 +75,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _start_wave() -> void:
-    Sc.logger.print("MeteorController._start_wave")
+#    Sc.logger.print("MeteorController._start_wave")
     
     is_in_wave = true
     
@@ -82,20 +83,20 @@ func _start_wave() -> void:
     next_wave_end_time = next_wave_start_time + current_wave_duration
     
     current_wave_duration += WAVE_DURATION_DELTA
-    current_wave_meteor_frequency += METEOR_WAVE_FREQUENCY_DELTA
-    current_non_wave_meteor_frequency += NON_WAVE_METEOR_FREQUENCY_DELTA
+    current_wave_meteor_frequency *= METEOR_WAVE_FREQUENCY_MULTIPLIER
+    current_non_wave_meteor_frequency *= NON_WAVE_METEOR_FREQUENCY_MULTIPLIER
     
     _trigger_meteor()
 
 
 func _end_wave() -> void:
-    Sc.logger.print("MeteorController._end_wave")
+#    Sc.logger.print("MeteorController._end_wave")
     
     is_in_wave = false
 
 
 func _trigger_meteor() -> void:
-    Sc.logger.print("MeteorController._trigger_meteor")
+#    Sc.logger.print("MeteorController._trigger_meteor")
     
     var current_meteor_frequency := \
             current_wave_meteor_frequency if \
