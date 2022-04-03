@@ -22,6 +22,9 @@ func _ready() -> void:
     buttons = Sc.utils.add_scene(self, _OVERLAY_BUTTON_PANEL_CLASS)
     buttons.connect("button_pressed", self, "_on_button_pressed")
     _set_up_mouse_hover_area()
+    
+    if is_instance_valid(Sc.level.bot_selector):
+        _on_bot_selection_changed(Sc.level.bot_selector.selected_bot)
 
 
 func _set_up_mouse_hover_area() -> void:

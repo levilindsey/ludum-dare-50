@@ -43,6 +43,8 @@ func _ready() -> void:
                 "mouse_exited", self, "_on_button_mouse_exited", [button])
         button.connect("pressed", self, "_on_button_pressed", [button])
         button.rect_size = _BUTTON_SIZE
+    
+    deemphasize()
 
 
 func set_up_controls(
@@ -97,14 +99,14 @@ func deemphasize() -> void:
 
 
 func _on_button_mouse_entered(button: TextureButton) -> void:
-    button.modulate.s = 1.0 + _SATURATION_DELTA_HOVER
-    button.modulate.v = 1.0 + _VALUE_DELTA_HOVER
+#    button.modulate.s = 1.0 + _SATURATION_DELTA_HOVER
+#    button.modulate.v = 1.0 + _VALUE_DELTA_HOVER
     button.modulate.a = _OPACITY_HOVER
 
 
 func _on_button_mouse_exited(button: TextureButton) -> void:
-    button.modulate.s = 1.0 + _SATURATION_DELTA_NORMAL
-    button.modulate.v = 1.0 + _VALUE_DELTA_NORMAL
+#    button.modulate.s = 1.0 + _SATURATION_DELTA_NORMAL
+#    button.modulate.v = 1.0 + _VALUE_DELTA_NORMAL
     button.modulate.a = _OPACITY_NORMAL
 
 
@@ -128,6 +130,10 @@ func _get_type_for_button(button: TextureButton) -> int:
         return OverlayButtonType.SCANNER_STATION
     elif button == buttons_container.get_node("Solar"):
         return OverlayButtonType.SOLAR_COLLECTOR
+    elif button == buttons_container.get_node("RunPowerLine"):
+        return OverlayButtonType.RUN_WIRE
+    elif button == buttons_container.get_node("ConstructorBot"):
+        return OverlayButtonType.BUILD_CONSTRUCTOR_BOT
     else:
         Sc.logger.error("OverlayButtonPanel._get_type_for_button")
         return OverlayButtonType.UNKNOWN

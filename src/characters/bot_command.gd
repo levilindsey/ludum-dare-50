@@ -11,4 +11,5 @@ enum {
     REPAIR_STATION,
     BUILD_STATION,
     POWER_ON_BOT,
+    BUILD_BOT,
 }

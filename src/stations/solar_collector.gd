@@ -13,7 +13,8 @@ func get_are_buttons_shown_for_bot_selection(bot) -> bool:
 
 func get_buttons(bot) -> Array:
     return [
-        OverlayButtonType.DESTROY,
+        OverlayButtonType.RUN_WIRE,
+#        OverlayButtonType.DESTROY,
     ]
 
 

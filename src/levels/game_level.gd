@@ -48,7 +48,7 @@ func _start() -> void:
     for empty_station in empty_stations:
         Sc.level._on_station_created(empty_station)
     
-    main_bot = add_bot("constructor")
+    main_bot = add_bot("constructor_bot")
     
     for station in stations:
         station._on_level_started()
@@ -85,6 +85,7 @@ func _destroy() -> void:
 
 
 func _on_bot_selection_changed(selected_bot) -> void:
+    print("_on_bot_selection_changed")
     clear_station_selection()
     for station in stations:
         station._on_bot_selection_changed(selected_bot)
@@ -102,11 +103,13 @@ func _on_station_button_pressed(
         OverlayButtonType.RUN_WIRE:
             if is_instance_valid(
                     _first_selected_station_for_running_power_line):
+                print("Second wire end")
                 bot.move_to_attach_power_line(
                         _first_selected_station_for_running_power_line,
                         station)
                 clear_station_selection()
             else:
+                print("First wire end")
                 _first_selected_station_for_running_power_line = station
         
         OverlayButtonType.COMMAND_CENTER:
@@ -122,13 +125,13 @@ func _on_station_button_pressed(
             bot.move_to_build_station(station, "battery")
         
         OverlayButtonType.BUILD_CONSTRUCTOR_BOT:
-            command_center.build_bot("constructor_bot")
+            bot.move_to_build_bot(station, "constructor_bot")
         OverlayButtonType.BUILD_LINE_RUNNER_BOT:
-            command_center.build_bot("line_runner_bot")
+            bot.move_to_build_bot(station, "line_runner_bot")
         OverlayButtonType.BUILD_REPAIR_BOT:
-            command_center.build_bot("repair_bot")
+            bot.move_to_build_bot(station, "repair_bot")
         OverlayButtonType.BUILD_BARRIER_BOT:
-            command_center.build_bot("barrier_bot")
+            bot.move_to_build_bot(station, "barrier_bot")
         _:
             Sc.logger.error("GameLevel._on_station_button_pressed")
     
@@ -155,7 +158,7 @@ func _on_power_line_destroyed(power_line: PowerLine) -> void:
 func add_bot(bot_name: String) -> Bot:
     var bot_scene: PackedScene
     match bot_name:
-        "constructor":
+        "constructor_bot":
             bot_scene = _CONSTRUCTOR_BOT_SCENE
         _:
             Sc.logger.error("GameLevel.add_bot")

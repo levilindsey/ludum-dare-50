@@ -44,11 +44,17 @@ func _unhandled_input(event: InputEvent) -> void:
                 event.physical_scancode == KEY_S or \
                 event.physical_scancode == KEY_D:
             if event.pressed:
+                if event.physical_scancode == selected_key:
+                    # No change.
+                    return
                 selected_key = event.physical_scancode
                 selected_bot = bot_bindings[selected_key]
                 is_key_selected = true
                 is_bot_selected = is_instance_valid(selected_bot)
             else:
+                if event.physical_scancode != selected_key:
+                    # Ignore different key.
+                    return
                 selected_key = -1
                 selected_bot = null
                 is_key_selected = false

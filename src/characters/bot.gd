@@ -18,6 +18,7 @@ var command := BotCommand.UNKNOWN
 var target_station: Station
 var next_target_station: Station
 var station_type: String
+var bot_type: String
 
 var light: Light2D
 
@@ -189,6 +190,29 @@ func _on_reached_station_to_destroy() -> void:
     _on_command_ended()
 
 
+func move_to_build_bot(
+        station: Station,
+        bot_type: String) -> void:
+    _on_command_started(BotCommand.BUILD_BOT)
+    self.target_station = station
+    self.bot_type = bot_type
+    _navigate_to_target_station()
+
+
+func _on_reached_station_to_build_bot() -> void:
+    # FIXME: Play sound and particles
+    Sc.logger.print(
+        "Bot._on_reached_station_to_build_bot: bot=%s, bot_to_build=%s, p=%s" % [
+            self.character_name,
+            station_type,
+            target_station.position,
+        ])
+    assert(is_instance_valid(target_station))
+    Sc.level.add_bot(bot_type)
+    self.target_station = null
+    self.bot_type = ""
+    _on_command_ended()
+
 func _navigate_to_target_station() -> void:
     if self._extra_collision_detection_area.overlaps_area(target_station):
         _on_reached_target_station()
@@ -233,6 +257,7 @@ func _on_command_ended() -> void:
     target_station = null
     next_target_station = null
     station_type = ""
+    bot_type = ""
     if is_instance_valid(held_power_line):
         Sc.level.remove_power_line(held_power_line)
     
@@ -297,6 +322,8 @@ func _on_reached_target_station() -> void:
             pass
         BotCommand.BUILD_STATION:
             _on_reached_station_to_build()
+        BotCommand.BUILD_BOT:
+            _on_reached_station_to_build_bot()
         _:
             Sc.logger.error(
                     "Bot._on_started_colliding: command=%s" % \

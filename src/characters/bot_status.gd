@@ -21,12 +21,12 @@ const HIGHLIGHT_CONFIGS := {
     ACTIVE: {
         color = Color("53c700"),
         scale = 0.1,
-        energy = 0.6,
+        energy = 0.3,
     },
     IDLE: {
         color = Color("ffd000"),
         scale = 0.1,
-        energy = 0.9,
+        energy = 0.8,
     },
     STOPPING: {
         color = Color("ffd000"),
