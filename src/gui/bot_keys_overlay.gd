@@ -4,8 +4,8 @@ extends ScaffolderPanelContainer
 
 
 var _BOTTOM_PADDING := 16.0
-var _BUTTON_SIZE := Vector2(16.0, 16.0)
-var _TEXTURE_SIZE := Vector2(16.0, 16.0)
+var _BUTTON_SIZE := Vector2(32, 32)
+var _TEXTURE_SIZE := Vector2(16, 16)
 
 var _UNBOUND_KEY_MODULATE := Color("77292929")
 var _UNBOUND_SELECTED_KEY_MODULATE := Color("ffcc2c16")
@@ -82,11 +82,11 @@ func _get_texture_for_key(key: int) -> ScaffolderTextureRect:
     elif key == KEY_E:
         texture_rect = $VBoxContainer/HBoxContainer/E
     elif key == KEY_A:
-        texture_rect = $VBoxContainer/HBoxContainer/A
+        texture_rect = $VBoxContainer/HBoxContainer2/A
     elif key == KEY_S:
-        texture_rect = $VBoxContainer/HBoxContainer/S
+        texture_rect = $VBoxContainer/HBoxContainer2/S
     elif key == KEY_D:
-        texture_rect = $VBoxContainer/HBoxContainer/D
+        texture_rect = $VBoxContainer/HBoxContainer2/D
     else:
         Sc.logger.error("_get_texture_for_key")
     return texture_rect

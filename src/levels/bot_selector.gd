@@ -43,21 +43,6 @@ func _unhandled_input(event: InputEvent) -> void:
             
             Sc.gui.hud.bot_keys_overlay._on_bot_selection_changed()
             Sc.level._on_bot_selection_changed(selected_bot)
-            
-            if is_instance_valid(selected_bot):
-                pass
-            else:
-                pass
-            # FIXME: --------------
-            # - Make sure I register Hud in the manifest, and do other setup calls; follow other example
-            # - BotKeysOverlay
-            # FIXME: 
-            # - If there is:
-            #   - Call Sc.level._on_bot_selection_changed.
-            #   - Start panning toward the bot.
-            # - If not:
-            #   - Stop padding
-            pass
 
 
 func get_is_key_bound(key: int) -> bool:

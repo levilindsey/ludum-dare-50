@@ -8,23 +8,35 @@ signal button_pressed(button_type)
 const _CONTAINER_OPACITY_EMPHASIZED := 0.99
 const _CONTAINER_OPACITY_DEEMPHASIZED := 0.6
 
-const _OPACITY_NORMAL := 0.9
+const _OPACITY_NORMAL := 0.75
 const _OPACITY_HOVER := 0.999
 
 const _VALUE_DELTA_NORMAL := 0.0
-const _VALUE_DELTA_HOVER := 0.15
+const _VALUE_DELTA_HOVER := 0.35
 
 const _SATURATION_DELTA_NORMAL := 0.0
-const _SATURATION_DELTA_HOVER := -0.1
+const _SATURATION_DELTA_HOVER := -0.3
 
-const _BUTTON_SIZE := Vector2(16.0, 16.0)
+const _BUTTON_SIZE := Vector2(32, 32)
+
+const _PANEL_OFFSET := Vector2(0, 4)
+
+const _HOVER_DISTANCE_SQUARED := 128.0 * 128.0
 
 # Array<TextureButton>
 var buttons := []
 
+var buttons_container: Control
+
+var station_level_position := Vector2.INF
+
+var is_mouse_in_region := false
+
 
 func _ready() -> void:
-    for button in $Buttons:
+    buttons_container = $Buttons
+    
+    for button in buttons_container.get_children():
         button.connect(
                 "mouse_entered", self, "_on_button_mouse_entered", [button])
         button.connect(
@@ -33,14 +45,24 @@ func _ready() -> void:
         button.rect_size = _BUTTON_SIZE
 
 
+func set_up_controls(
+        station_position: Vector2,
+        station_area_position: Vector2,
+        station_area_size: Vector2) -> void:
+    self.station_level_position = station_position
+
+
 func set_buttons(button_types: Array) -> void:
     var visible_buttons := []
     
     # Set up hover behavior.
-    for button in $Buttons:
+    for button in buttons_container.get_children():
         button.modulate.a = _OPACITY_NORMAL
-        button.visible = button_types.find(_get_type_for_button(button)) >= 0
-        visible_buttons.push_back(button)
+        var is_button_visible := \
+                button_types.find(_get_type_for_button(button)) >= 0
+        button.visible = is_button_visible
+        if is_button_visible:
+            visible_buttons.push_back(button)
     
     # Calculate the button row and column counts.
     var row_count: int
@@ -56,14 +78,14 @@ func set_buttons(button_types: Array) -> void:
     # Assign the individual button positions.
     for row_i in row_count:
         for column_i in column_count:
-            var button_i: int = row_i * column_count + column_count
+            var button_i: int = row_i * column_count + column_i
             var button_position := _BUTTON_SIZE * Vector2(column_i, row_i)
             visible_buttons[button_i].rect_position = button_position
     
     # Assign the container position and size.
-    var container_size := Vector2(column_count, row_count)
-    $Buttons.rect_size = container_size
-    $Buttons.rect_position = container_size * Vector2(-0.5, -1.0)
+    var container_size := Vector2(column_count, row_count) * _BUTTON_SIZE
+    buttons_container.rect_size = container_size
+    buttons_container.rect_position = container_size * Vector2(-0.5, 0.0) + _PANEL_OFFSET
 
 
 func emphasize() -> void:
@@ -75,16 +97,14 @@ func deemphasize() -> void:
 
 
 func _on_button_mouse_entered(button: TextureButton) -> void:
-    emphasize()
-    button.modulate.s = _SATURATION_DELTA_HOVER
-    button.modulate.v = _VALUE_DELTA_HOVER
+    button.modulate.s = 1.0 + _SATURATION_DELTA_HOVER
+    button.modulate.v = 1.0 + _VALUE_DELTA_HOVER
     button.modulate.a = _OPACITY_HOVER
 
 
 func _on_button_mouse_exited(button: TextureButton) -> void:
-    deemphasize()
-    button.modulate.s = _SATURATION_DELTA_NORMAL
-    button.modulate.v = _VALUE_DELTA_NORMAL
+    button.modulate.s = 1.0 + _SATURATION_DELTA_NORMAL
+    button.modulate.v = 1.0 + _VALUE_DELTA_NORMAL
     button.modulate.a = _OPACITY_NORMAL
 
 
@@ -94,14 +114,46 @@ func _on_button_pressed(button: TextureButton) -> void:
 
 
 func _get_type_for_button(button: TextureButton) -> int:
-    if button == $Destroy:
+    if button == buttons_container.get_node("Destroy"):
         return OverlayButtonType.DESTROY
-    elif button == $Battery:
+    elif button == buttons_container.get_node("Battery"):
         return OverlayButtonType.BATTERY_STATION
-    elif button == $Scanner:
+    elif button == buttons_container.get_node("Scanner"):
         return OverlayButtonType.SCANNER_STATION
-    elif button == $Solar:
+    elif button == buttons_container.get_node("Solar"):
         return OverlayButtonType.SOLAR_COLLECTOR
     else:
         Sc.logger.error("OverlayButtonPanel._get_type_for_button")
         return OverlayButtonType.UNKNOWN
+
+
+func _on_mouse_entered() -> void:
+    emphasize()
+
+
+func _on_mouse_exited() -> void:
+    deemphasize()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event is InputEventMouseMotion:
+        var click_position: Vector2 = \
+                Sc.utils.get_level_touch_position(event)
+        var next_is_mouse_in_region := \
+                click_position.distance_squared_to(station_level_position) < \
+                _HOVER_DISTANCE_SQUARED
+        if is_mouse_in_region != next_is_mouse_in_region:
+            is_mouse_in_region = next_is_mouse_in_region
+            if is_mouse_in_region:
+                _on_mouse_entered()
+            else:
+                _on_mouse_exited()
+    
+    if Sc.gui.is_player_interaction_enabled and \
+            event is InputEventMouseButton and \
+            event.button_index == BUTTON_LEFT and \
+            event.pressed:
+        var click_position: Vector2 = \
+                Sc.utils.get_level_touch_position(event)
+        # FIXME: ---------------------
+        # - Replace scroll-killing TextureButtons with custom button logic.
