@@ -40,6 +40,8 @@ func _unhandled_input(event: InputEvent) -> void:
             else:
                 selected_key = -1
                 selected_bot = null
+                is_key_selected = false
+                is_bot_selected = false
             
             Sc.gui.hud.bot_keys_overlay._on_bot_selection_changed()
             Sc.level._on_bot_selection_changed(selected_bot)

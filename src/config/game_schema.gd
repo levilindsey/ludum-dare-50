@@ -283,10 +283,12 @@ var _character_categories := [
 ]
 
 var _character_manifest := {
-    default_character_name = "construction_bot",
+    default_player_character_name = "",
     character_scenes = _character_scenes,
     character_categories = _character_categories,
     omits_npcs = false,
+    can_include_player_characters = true,
+    is_camera_auto_assigned_to_player_character = false,
 }
 
 var _properties := {
@@ -308,6 +310,11 @@ var _additive_overrides := {
                 GameDefaultAnnotationParameters.new()),
             Utils.get_direct_non_color_properties(
                 GameDefaultColors.new())),
+    },
+    SurfacerSchema: {
+        movement_manifest = {
+            do_player_actions_interrupt_navigation = false,
+        },
     },
     SurfaceTilerSchema: {
         includes_intra_subtile_45_concave_cusps = false,
