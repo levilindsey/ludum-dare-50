@@ -2069,7 +2069,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/static_text_control_row.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "Station",
 "language": "GDScript",
 "path": "res://src/stations/station.gd"
@@ -3181,6 +3181,9 @@ pointing/emulate_touch_from_mouse=true
 
 2d_render/layer_2="character"
 2d_physics/layer_1="surfaces_tilemaps"
+2d_physics/layer_2="bots"
+2d_physics/layer_3="stations"
+2d_physics/layer_4="meteors"
 
 [logging]
 

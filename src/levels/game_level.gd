@@ -27,6 +27,12 @@ func _start() -> void:
     command_center = Sc.utils.get_child_by_type($Stations, CommandCenter)
     main_bot = Sc.utils.get_child_by_type(self, ConstructionBot)
     
+    Sc.level._on_station_created(command_center)
+    Sc.level._on_bot_created(main_bot)
+    
+    # FIXME: Remove this.
+    Sc.level._on_station_created(Sc.utils.get_child_by_type($Stations, SolarCollector))
+    
     for station in stations:
         station._on_level_started()
     for bot in bots:

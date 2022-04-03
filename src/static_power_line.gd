@@ -8,9 +8,11 @@ var points := []
 func _init(
         rope: Rope,
         start_attachment,
-        end_attachment).(
+        end_attachment,
+        mode: int).(
         start_attachment,
-        end_attachment) -> void:
+        end_attachment,
+        mode) -> void:
     _parse_points(rope)
 
 

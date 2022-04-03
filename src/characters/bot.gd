@@ -7,9 +7,7 @@ export var rope_attachment_offset := Vector2.ZERO
 
 var held_power_line: DynamicPowerLine
 
-
-func _ready() -> void:
-    Sc.level._on_bot_created(self)
+var health := 1.0
 
 
 func _on_level_started() -> void:
@@ -19,13 +17,19 @@ func _on_level_started() -> void:
 func start_running_power_line(
         origin_station: Station,
         destination_station: Station) -> void:
-    var distance := origin_station.position.distance_to(
-            destination_station.position)
     self.held_power_line = DynamicPowerLine.new(
-            distance,
             origin_station,
-            self)
+            destination_station,
+            self,
+            PowerLine.HELD_BY_BOT)
     Sc.level.add_power_line(held_power_line)
+
+
+func connect_power_line() -> void:
+    # FIXME: Play sound and particles
+    assert(is_instance_valid(held_power_line))
+    held_power_line._on_connected()
+    held_power_line = null
 
 
 func get_power_line_attachment_position() -> Vector2:
@@ -34,14 +38,20 @@ func get_power_line_attachment_position() -> Vector2:
             Vector2(self.surface_state.horizontal_facing_sign, 1.0)
 
 
-#func _on_started_colliding(
-#        target: Node2D,
-#        layer_names: Array) -> void:
-#    match layer_names[0]:
-#        "foo":
-#            pass
-#        _:
-#            Sc.logger.error()
+func _on_started_colliding(
+        target: Node2D,
+        layer_names: Array) -> void:
+    match layer_names[0]:
+        "bots":
+            pass
+        "stations":
+            if is_instance_valid(held_power_line) and \
+                    held_power_line.destination_station == target:
+                connect_power_line()
+        "meteors":
+            pass
+        _:
+            Sc.logger.error("Bot._on_started_colliding: %s" % str(layer_names))
 
 
 func _process_sounds() -> void:

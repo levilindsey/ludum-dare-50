@@ -4,15 +4,14 @@
 [ext_resource path="res://src/characters/construction_bot/construction_bot_animator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_parameters.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 15 )
 
 [node name="ConstructionBot" type="KinematicBody2D"]
-collision_layer = 32
-collision_mask = 19
+collision_layer = 2
 script = ExtResource( 1 )
 character_name = "construction_bot"
-collision_detection_layers = 8
+collision_detection_layers = 14
 rope_attachment_offset = Vector2( -1, -4 )
 primary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)
 
@@ -39,8 +38,7 @@ logs_verbose_navigator_events = false
 stores_logs_on_character_instances = false
 
 [node name="MovementParameters" parent="." instance=ExtResource( 3 )]
-collider_shape = SubResource( 2 )
-collider_rotation = 1.5708
+collider_shape = SubResource( 3 )
 character_category_name = "construction_bot"
 __movement_params_identifier__ = "_"
 surface_speed_multiplier = 0.6
@@ -58,8 +56,7 @@ oblique_collison_normal_aspect_ratio_threshold = 10.0
 [node name="ConstructionBotAnimator" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }

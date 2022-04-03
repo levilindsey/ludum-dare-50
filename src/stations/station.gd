@@ -1,13 +1,11 @@
 tool
 class_name Station
-extends Node2D
+extends Area2D
 
 
 export var rope_attachment_offset := Vector2.ZERO
 
-
-func _ready() -> void:
-    Sc.level._on_station_created(self)
+var health := 1.0
 
 
 func _on_level_started() -> void:

@@ -2,18 +2,44 @@ class_name DynamicPowerLine
 extends PowerLine
 
 
+const _STABILIZATION_DELAY_BEFORE_SWITCHING_TO_STATIC_LINE := 1.0
+
+var destination_station
 var rope: Rope
 
 var _vertices := PoolVector2Array()
 
 
 func _init(
-        target_distance: float,
-        start_attachment,
-        end_attachment).(
-        start_attachment,
-        end_attachment) -> void:
+        origin_station,
+        destination_station,
+        bot,
+        mode: int).(
+        origin_station,
+        bot,
+        mode) -> void:
+    self.destination_station = destination_station
+    var target_distance: float = \
+            origin_station.position.distance_to(destination_station.position)
     self.rope = Rope.new(target_distance)
+
+
+func _on_connected() -> void:
+    self.mode = PowerLine.CONNECTED
+    self.end_attachment = destination_station
+    Sc.time.set_timeout(
+            funcref(self, "_replace_with_static_line"),
+            _STABILIZATION_DELAY_BEFORE_SWITCHING_TO_STATIC_LINE)
+
+
+func _replace_with_static_line() -> void:
+    var connected_power_line := StaticPowerLine.new(
+            self.rope,
+            self.start_attachment,
+            self.destination_station,
+            PowerLine.CONNECTED)
+    Sc.level.add_power_line(connected_power_line)
+    Sc.level.remove_power_line(self)
 
 
 func _physics_process(_delta: float) -> void:
