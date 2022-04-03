@@ -74,8 +74,13 @@ func _on_level_started() -> void:
 
 
 func set_is_selected(is_selected: bool) -> void:
-    self.is_selected = true
+    if self.is_selected == is_selected:
+        # No change.
+        return
+    self.is_selected = is_selected
     _update_highlight_mode()
+    if is_selected:
+        self.set_is_player_control_active(true)
 
 
 func _update_highlight_mode() -> void:

@@ -8,11 +8,12 @@
 radius = 16.0
 
 [node name="TestCharacter" type="KinematicBody2D"]
-collision_layer = 32
-collision_mask = 19
+collision_layer = 8
 script = ExtResource( 1 )
 character_name = "test_character"
 collision_detection_layers = 8
+is_bouncy = false
+rotates_to_match_surface_normal = true
 primary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/static_color_config.gd" ),"h":0.683333,"s":0.384618,"v":0.203922,"a":1.0,"r":0.133333,"g":0.12549,"b":0.203922,"color":Color( 0.133333, 0.12549, 0.203922, 1 ),"_h":0.683333,"_s":0.384618,"_v":0.203922,"_a":1.0,"_color":null)
 
 secondary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"white","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"white","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)

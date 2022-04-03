@@ -32,6 +32,21 @@ func _amend_manifest() -> void:
             if excluded_keys.has(event.physical_scancode):
                 entry.events.erase(event)
                 break
+    var excluded_actions := {
+        "jump": true,
+        "move_up": true,
+        "move_down": true,
+        "move_left": true,
+        "move_right": true,
+        "dash": true,
+        "grab": true,
+        "face_left": true,
+        "face_right": true,
+    }
+    for entry in Sc.manifest.input_map:
+        if excluded_actions.has(entry.name):
+            for event in entry.events:
+                entry.events.erase(event)
 
 
 func _configure_sub_modules() -> void:

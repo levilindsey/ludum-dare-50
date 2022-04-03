@@ -135,7 +135,7 @@ animations = [ {
 extents = Vector2( 29, 24 )
 
 [node name="CommandCenter" type="Area2D"]
-collision_layer = 4
+collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource( 1 )
@@ -144,7 +144,7 @@ rope_attachment_offset = Vector2( 0, -36 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 31 )
-frame = 28
+frame = 14
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

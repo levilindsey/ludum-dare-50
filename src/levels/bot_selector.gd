@@ -3,12 +3,12 @@ extends Node2D
 
 
 const BOT_KEYS := [
-    KEY_Q,
-    KEY_W,
-    KEY_E,
     KEY_A,
     KEY_S,
     KEY_D,
+    KEY_Q,
+    KEY_W,
+    KEY_E,
 ]
 
 var bot_bindings := {}
@@ -22,6 +22,17 @@ var selected_bot: Bot = null
 func _init() -> void:
     for key in BOT_KEYS:
         bot_bindings[key] = null
+
+
+func _on_bot_created(bot: Bot) -> void:
+    var was_bot_bound := false
+    for key in BOT_KEYS:
+        if !is_instance_valid(bot_bindings[key]):
+            bot_bindings[key] = bot
+            was_bot_bound = true
+            break
+    assert(was_bot_bound)
+    Sc.gui.hud.bot_keys_overlay._on_bot_selection_changed()
 
 
 func _unhandled_input(event: InputEvent) -> void:

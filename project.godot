@@ -3225,9 +3225,11 @@ pointing/emulate_touch_from_mouse=true
 
 2d_render/layer_2="character"
 2d_physics/layer_1="surfaces_tilemaps"
-2d_physics/layer_2="bots"
-2d_physics/layer_3="stations"
-2d_physics/layer_4="meteors"
+2d_physics/layer_2="legacy1"
+2d_physics/layer_3="legacy2"
+2d_physics/layer_4="bots"
+2d_physics/layer_5="stations"
+2d_physics/layer_6="meteors"
 
 [logging]
 

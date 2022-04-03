@@ -9,10 +9,10 @@
 extents = Vector2( 10, 15 )
 
 [node name="ConstructionBot" type="KinematicBody2D"]
-collision_layer = 2
+collision_layer = 8
 script = ExtResource( 1 )
 character_name = "construction_bot"
-collision_detection_layers = 14
+collision_detection_layers = 56
 rope_attachment_offset = Vector2( -1, -4 )
 primary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)
 

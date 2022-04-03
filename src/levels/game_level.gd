@@ -3,6 +3,9 @@ class_name GameLevel
 extends SurfacerLevel
 
 
+const _CONSTRUCTOR_BOT_SCENE := preload(
+        "res://src/characters/construction_bot/construction_bot.tscn")
+
 var bot_selector: BotSelector
 
 var command_center: CommandCenter
@@ -32,17 +35,16 @@ func _start() -> void:
     add_child(bot_selector)
     
     command_center = Sc.utils.get_child_by_type($Stations, CommandCenter)
-    main_bot = Sc.utils.get_child_by_type(self, ConstructionBot)
-    
-    main_bot.set_can_be_player_character(true)
-    # FIXME: ---------------
-    main_bot.set_is_player_control_active(true)
     
     Sc.level._on_station_created(command_center)
-    Sc.level._on_bot_created(main_bot)
     
     # FIXME: Remove this.
-    Sc.level._on_station_created(Sc.utils.get_child_by_type($Stations, SolarCollector))
+    Sc.level._on_station_created(
+            Sc.utils.get_child_by_type($Stations, SolarCollector))
+    
+    main_bot = add_bot("constructor")
+    
+    var second_bot = add_bot("constructor")
     
     for station in stations:
         station._on_level_started()
@@ -52,8 +54,6 @@ func _start() -> void:
 
 func _destroy() -> void:
     ._destroy()
-    for bot in bots:
-        bot.queue_free()
     for station in stations:
         station.queue_free()
     for power_line in power_lines:
@@ -99,10 +99,23 @@ func _on_power_line_destroyed(power_line: PowerLine) -> void:
     power_line.queue_free()
 
 
-func add_bot(bot: Bot) -> void:
-    $Bots.add_child(bot)
-    main_bot.set_can_be_player_character(true)
+func add_bot(bot_name: String) -> Bot:
+    var bot_scene: PackedScene
+    match bot_name:
+        "constructor":
+            bot_scene = _CONSTRUCTOR_BOT_SCENE
+        _:
+            Sc.logger.error("GameLevel.add_bot")
+            return null
+    var bot: Bot = add_character(
+            bot_scene,
+            command_center.position + Vector2(0, -4),
+            true,
+            false,
+            true)
+    bot_selector._on_bot_created(bot)
     _on_bot_created(bot)
+    return bot
 func remove_bot(bot: Bot) -> void:
     _on_bot_destroyed(bot)
 func _on_bot_created(bot: Bot) -> void:
