@@ -27,7 +27,7 @@ const _HIGHLIGHT_CONFIGS := {
         energy = 0.6,
     },
     IDLE: {
-        color = Color("e0b400"),
+        color = Color("ffd000"),
         scale = 0.1,
         energy = 0.9,
     },
@@ -69,6 +69,10 @@ func _init() -> void:
     _update_highlight_mode()
 
 
+func _ready() -> void:
+    navigator.connect("navigation_started", self, "_on_navigation_started")
+
+
 func _on_level_started() -> void:
     start_running_power_line(Sc.level.command_center, Sc.level.stations[1])
 
@@ -79,8 +83,7 @@ func set_is_selected(is_selected: bool) -> void:
         return
     self.is_selected = is_selected
     _update_highlight_mode()
-    if is_selected:
-        self.set_is_player_control_active(true)
+    self.set_is_player_control_active(is_selected)
 
 
 func _update_highlight_mode() -> void:
@@ -140,6 +143,10 @@ func _on_powered_on() -> void:
 func _on_powered_down() -> void:
     is_powered_on = false
     _update_highlight_mode()
+
+
+func _on_navigation_started(is_retry: bool) -> void:
+    show_exclamation_mark()
 
 
 func _on_started_colliding(
