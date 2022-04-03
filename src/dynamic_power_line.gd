@@ -7,8 +7,6 @@ const _STABILIZATION_DELAY_BEFORE_SWITCHING_TO_STATIC_LINE := 1.0
 var destination_station
 var rope: Rope
 
-var _vertices := PoolVector2Array()
-
 
 func _init(
         origin_station,
@@ -61,9 +59,4 @@ func _update_vertices() -> void:
 
 func _draw() -> void:
     _update_vertices()
-
-    # FIXME: Base color on health?
-    var color := ROPE_COLOR
-    var width := ROPE_WIDTH
-
-    draw_polyline(_vertices, color, width)
+    _draw_polyline()

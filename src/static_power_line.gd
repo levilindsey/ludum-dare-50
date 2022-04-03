@@ -2,9 +2,6 @@ class_name StaticPowerLine
 extends PowerLine
 
 
-var points := []
-
-
 func _init(
         rope: Rope,
         start_attachment,
@@ -17,16 +14,10 @@ func _init(
 
 
 func _parse_points(rope: Rope) -> void:
-    points.resize(rope.nodes.size())
+    _vertices.resize(rope.nodes.size())
     for i in rope.nodes.size():
-        points[i] = rope.nodes[i].position
+        _vertices[i] = rope.nodes[i].position
 
 
 func _draw() -> void:
-    var vertices := PoolVector2Array(points)
-    
-    # FIXME: Base color on health?
-    var color := ROPE_COLOR
-    var width := ROPE_WIDTH
-    
-    draw_polyline(vertices, color, width)
+    _draw_polyline()
