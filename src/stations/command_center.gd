@@ -17,5 +17,9 @@ func get_buttons(bot) -> Array:
     ]
 
 
+func get_disabled_buttons(bot) -> Array:
+    return []
+
+
 func get_name() -> String:
     return "command"

@@ -5,6 +5,8 @@ extends Reference
 enum {
     UNKNOWN,
     
+    MOVE,
+    
     DESTROY,
     
     RUN_WIRE,
@@ -23,6 +25,8 @@ enum {
 
 static func get_string(type: int) -> String:
     match type:
+        MOVE:
+            return "MOVE"
         DESTROY:
             return "DESTROY"
         RUN_WIRE:

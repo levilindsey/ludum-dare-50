@@ -37,6 +37,9 @@ func _load() -> void:
 func _start() -> void:
     ._start()
     
+    Sc.level_session.current_energy = LevelSession.START_ENERGY
+    Sc.level_session.total_energy = LevelSession.START_ENERGY
+    
     bot_selector = BotSelector.new()
     add_child(bot_selector)
     
@@ -93,10 +96,45 @@ func _on_bot_selection_changed(selected_bot) -> void:
         bot.set_is_selected(bot == selected_bot)
 
 
+const ENERGY_COST_PER_BUTTON := {
+    OverlayButtonType.MOVE: 1,
+    OverlayButtonType.DESTROY: 10,
+    
+    OverlayButtonType.RUN_WIRE: 20,
+    
+    OverlayButtonType.COMMAND_CENTER: 500,
+    OverlayButtonType.SOLAR_COLLECTOR: 200,
+    OverlayButtonType.SCANNER_STATION: 500,
+    OverlayButtonType.BATTERY_STATION: 500,
+    
+    OverlayButtonType.BUILD_CONSTRUCTOR_BOT: 800,
+    OverlayButtonType.BUILD_LINE_RUNNER_BOT: 1000,
+    OverlayButtonType.BUILD_REPAIR_BOT: 1000,
+    OverlayButtonType.BUILD_BARRIER_BOT: 1000,
+}
+
+
+func deduct_energy_for_action(button_type: int) -> void:
+    if Sc.level_session.current_energy == 0:
+        return
+    var energy_cost: int = ENERGY_COST_PER_BUTTON[button_type]
+    Sc.level_session.current_energy -= energy_cost
+    Sc.level_session.current_energy = max(Sc.level_session.current_energy, 0)
+    if Sc.level_session.current_energy == 0:
+        Sc.level.quit(false, false)
+
+
+func add_energy(enery: int) -> void:
+    if Sc.level_session.current_energy == 0:
+        return
+    Sc.level_session.current_energy += enery
+    Sc.level_session.total_energy += enery
+
+
 func _on_station_button_pressed(
         station: Station,
         button_type: int) -> void:
-    var bot := bot_selector.selected_bot
+    var bot: Bot = bot_selector.selected_bot
     match button_type:
         OverlayButtonType.DESTROY:
             bot.move_to_destroy_station(station)

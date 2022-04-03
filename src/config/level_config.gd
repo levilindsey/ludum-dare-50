@@ -9,7 +9,7 @@ const LEVELS_PATH_PREFIX := "res://src/levels/"
 
 var level_manifest := {
     "0": {
-        name = "Test",
+        name = "Level 1",
         version = "0.0.1",
         is_test_level = true,
         sort_priority = -100,

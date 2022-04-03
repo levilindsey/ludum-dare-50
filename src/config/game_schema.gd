@@ -259,6 +259,18 @@ var _gui_manifest := {
         hud_class = Hud,
         hud_key_value_box_size = Vector2(256.0, 48.0),
         hud_key_value_list_item_manifest = [
+            {
+                item_class = TotalEnergyControlRow,
+                settings_enablement_label = "Total energy",
+                enabled_by_default = true,
+                settings_group_key = "hud",
+            },
+            {
+                item_class = CurrentEnergyControlRow,
+                settings_enablement_label = "Current energy",
+                enabled_by_default = true,
+                settings_group_key = "hud",
+            },
         ],
         is_hud_visible_by_default = true,
         is_inspector_enabled_default = false,
@@ -266,10 +278,17 @@ var _gui_manifest := {
     },
     welcome_panel_manifest = {
         items = [
+            ["Select bot", "Hold Q/W/E/A/S/D"],
+            ["Move bot", "L-click on platform"],
+            ["Command bot", "L-click on button"],
+            ["Cancel command", "R-click"],
+            ["Zoom in/out", "ctrl + =/-"],
         ],
     },
     screen_manifest = {
         screens = [
+            preload("res://src/gui/ld_loading_screen.tscn"),
+            preload("res://src/gui/ld_game_over_screen.tscn"),
         ],
     },
 }
@@ -358,8 +377,17 @@ var _subtractive_overrides := {
             ],
             character_categories = [
                 # ScaffolderSchema._SQUIRREL_CATEGORY,
-            ]
-        }
+            ],
+        },
+        gui_manifest = {
+            welcome_panel_manifest = {
+                items = [
+                    SurfacerSchema.WELCOME_PANEL_ITEM_AUTO_NAV,
+                    ScaffolderSchema.WELCOME_PANEL_ITEM_MOVE,
+                    ScaffolderSchema.WELCOME_PANEL_ITEM_JUMP,
+                ],
+            },
+        },
     },
     SurfaceTilerSchema: {
         tilesets = [

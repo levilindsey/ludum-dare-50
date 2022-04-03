@@ -54,14 +54,18 @@ func set_up_controls(
     self.station = station
 
 
-func set_buttons(button_types: Array) -> void:
+func set_buttons(
+        button_types: Array,
+        disabled_buttons: Array) -> void:
     var visible_buttons := []
     
     # Set up hover behavior.
     for button in buttons_container.get_children():
         button.modulate.a = _OPACITY_NORMAL
-        var is_button_visible := \
-                button_types.find(_get_type_for_button(button)) >= 0
+        var button_type := _get_type_for_button(button)
+        var is_button_visible := button_types.find(button_type) >= 0
+        var is_button_disabled := disabled_buttons.find(button_type) >= 0
+        # FIXME: ------------
         button.visible = is_button_visible
         if is_button_visible:
             visible_buttons.push_back(button)

@@ -16,7 +16,7 @@ var bot_bindings := {}
 var is_key_selected := false
 var is_bot_selected := false
 var selected_key := -1
-var selected_bot: Bot = null
+var selected_bot = null
 
 
 func _init() -> void:
@@ -24,7 +24,7 @@ func _init() -> void:
         bot_bindings[key] = null
 
 
-func _on_bot_created(bot: Bot) -> void:
+func _on_bot_created(bot) -> void:
     var was_bot_bound := false
     for key in BOT_KEYS:
         if !is_instance_valid(bot_bindings[key]):

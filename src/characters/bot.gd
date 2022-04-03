@@ -46,10 +46,25 @@ func _ready() -> void:
             "navigation_interrupted", self, "_on_navigation_interrupted")
 
 
+var movement_distance_per_one_enery_value := 40.0
+var total_movement_distance_cost := 0.0
+
+
 func _physics_process(delta: float) -> void:
     if surface_state.just_left_air and \
             is_stopping:
         _stop_nav()
+    
+    var previous_total_movement_distance_cost := total_movement_distance_cost
+    var current_distance_cost := \
+            surface_state.velocity.length() * ScaffolderTime.PHYSICS_TIME_STEP
+    total_movement_distance_cost += current_distance_cost
+    
+    if int(previous_total_movement_distance_cost / \
+            movement_distance_per_one_enery_value) != \
+            int(total_movement_distance_cost / \
+            movement_distance_per_one_enery_value):
+        Sc.level.deduct_energy_for_action(OverlayButtonType.MOVE)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -97,6 +112,8 @@ func set_highlight(status: int) -> void:
 func move_to_attach_power_line(
         origin_station: Station,
         destination_station: Station) -> void:
+    if origin_station == destination_station:
+        return
     _on_command_started(BotCommand.RUN_POWER_LINE)
     self.target_station = origin_station
     self.next_target_station = destination_station
@@ -124,6 +141,7 @@ func _on_reached_first_station_for_power_line() -> void:
             PowerLine.HELD_BY_BOT)
     Sc.level.add_power_line(held_power_line)
     _navigate_to_target_station()
+    Sc.level.deduct_energy_for_action(OverlayButtonType.RUN_WIRE)
 
 
 func _on_reached_second_station_for_power_line() -> void:
@@ -136,6 +154,7 @@ func _on_reached_second_station_for_power_line() -> void:
         ])
     assert(is_instance_valid(held_power_line))
     self.held_power_line._on_connected()
+    Sc.level.deduct_energy_for_action(OverlayButtonType.RUN_WIRE)
     self.held_power_line = null
     self.target_station = null
     _on_command_ended()
@@ -166,6 +185,8 @@ func _on_reached_station_to_build() -> void:
             target_station.position,
         ])
     Sc.level.replace_station(target_station, station_type)
+    Sc.level.deduct_energy_for_action(
+            _get_button_type_for_station_type(station_type))
     target_station = null
     _on_command_ended()
 
@@ -186,6 +207,7 @@ func _on_reached_station_to_destroy() -> void:
         ])
     assert(is_instance_valid(target_station))
     Sc.level.replace_station(target_station, "empty")
+    Sc.level.deduct_energy_for_action(OverlayButtonType.DESTROY)
     target_station = null
     _on_command_ended()
 
@@ -209,6 +231,7 @@ func _on_reached_station_to_build_bot() -> void:
         ])
     assert(is_instance_valid(target_station))
     Sc.level.add_bot(bot_type)
+    Sc.level.deduct_energy_for_action(_get_button_type_for_bot_type(bot_type))
     self.target_station = null
     self.bot_type = ""
     _on_command_ended()
@@ -338,3 +361,31 @@ func _process_sounds() -> void:
         Sc.audio.play_sound("test_character_land")
     elif surface_state.just_touched_surface:
         Sc.audio.play_sound("test_character_hit_surface")
+
+
+func _get_button_type_for_station_type(station_type: String) -> int:
+    match station_type:
+        "solar":
+            return OverlayButtonType.SOLAR_COLLECTOR
+        "scanner":
+            return OverlayButtonType.SCANNER_STATION
+        "battery":
+            return OverlayButtonType.BATTERY_STATION
+        _:
+            Sc.logger.error("Bot._get_button_type_for_station_type")
+            return OverlayButtonType.UNKNOWN
+
+
+func _get_button_type_for_bot_type(bot_type: String) -> int:
+    match bot_type:
+        "constructor_bot":
+            return OverlayButtonType.BUILD_CONSTRUCTOR_BOT
+        "line_runner_bot":
+            return OverlayButtonType.BUILD_LINE_RUNNER_BOT
+        "repair_bot":
+            return OverlayButtonType.BUILD_REPAIR_BOT
+        "barrier_bot":
+            return OverlayButtonType.BUILD_BARRIER_BOT
+        _:
+            Sc.logger.error("Bot._get_button_type_for_bot_type")
+            return OverlayButtonType.UNKNOWN

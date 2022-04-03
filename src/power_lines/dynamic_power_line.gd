@@ -4,6 +4,7 @@ extends PowerLine
 
 const _STABILIZATION_DELAY_BEFORE_SWITCHING_TO_STATIC_LINE := 1.0
 
+var origin_station
 var destination_station
 var rope: Rope
 
@@ -16,6 +17,7 @@ func _init(
         origin_station,
         bot,
         mode) -> void:
+    self.origin_station = origin_station
     self.destination_station = destination_station
     var target_distance: float = \
             origin_station.position.distance_to(destination_station.position)
@@ -25,6 +27,8 @@ func _init(
 func _on_connected() -> void:
     self.mode = PowerLine.CONNECTED
     self.end_attachment = destination_station
+    origin_station.add_connection(destination_station)
+    destination_station.add_connection(origin_station)
     Sc.time.set_timeout(
             funcref(self, "_replace_with_static_line"),
             _STABILIZATION_DELAY_BEFORE_SWITCHING_TO_STATIC_LINE)

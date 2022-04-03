@@ -5,5 +5,14 @@ extends SurfacerLevelSession
 #       destroyed.
 
 
-#func reset(id: String) -> void:
-#    .reset(id)
+const START_ENERGY := 1000
+
+
+var total_energy := START_ENERGY
+var current_energy := START_ENERGY
+
+
+func reset(id: String) -> void:
+    .reset(id)
+    total_energy = START_ENERGY
+    current_energy = START_ENERGY
