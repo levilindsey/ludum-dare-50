@@ -132,7 +132,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=32]
-extents = Vector2( 29, 17.5 )
+extents = Vector2( 29, 24 )
 
 [node name="CommandCenter" type="Area2D"]
 collision_layer = 4
@@ -144,11 +144,11 @@ rope_attachment_offset = Vector2( 0, -36 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 31 )
-frame = 24
+frame = 23
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -17.5 )
+position = Vector2( 0, -24 )
 shape = SubResource( 32 )

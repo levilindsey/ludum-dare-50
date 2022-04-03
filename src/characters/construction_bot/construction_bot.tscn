@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/characters/construction_bot/construction_bot.gd" type="Script" id=1]
 [ext_resource path="res://src/characters/construction_bot/construction_bot_animator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_parameters.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/scaffolder/assets/images/misc/circle_gradient_modified_1024.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 15 )
@@ -60,3 +61,12 @@ shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -16 )
+z_as_relative = false
+texture = ExtResource( 4 )
+texture_scale = 0.1
+color = Color( 0.27, 0.708, 1, 1 )
+range_layer_min = -100
+range_layer_max = 100

@@ -99,6 +99,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/bot.gd"
 }, {
+"base": "ScaffolderPanelContainer",
+"class": "BotKeysOverlay",
+"language": "GDScript",
+"path": "res://src/gui/bot_keys_overlay.gd"
+}, {
+"base": "Node2D",
+"class": "BotSelector",
+"language": "GDScript",
+"path": "res://src/levels/bot_selector.gd"
+}, {
 "base": "CheckboxControlRow",
 "class": "ButtonControlsControlRow",
 "language": "GDScript",
@@ -532,7 +542,7 @@ _global_script_classes=[ {
 "base": "PowerLine",
 "class": "DynamicPowerLine",
 "language": "GDScript",
-"path": "res://src/dynamic_power_line.gd"
+"path": "res://src/power_lines/dynamic_power_line.gd"
 }, {
 "base": "EdgeAttempt",
 "class": "Edge",
@@ -703,6 +713,11 @@ _global_script_classes=[ {
 "class": "ElementAnnotator",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/element_annotator.gd"
+}, {
+"base": "Station",
+"class": "EmptyStation",
+"language": "GDScript",
+"path": "res://src/stations/empty_station.gd"
 }, {
 "base": "TransientAnnotator",
 "class": "ExclamationMarkAnnotator",
@@ -1013,6 +1028,11 @@ _global_script_classes=[ {
 "class": "HsvRangeColorConfig",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/config/color_config/hsv_range_color_config.gd"
+}, {
+"base": "SurfacerHud",
+"class": "Hud",
+"language": "GDScript",
+"path": "res://src/gui/hud.gd"
 }, {
 "base": "ScaffolderPanelContainer",
 "class": "HudKeyValueBox",
@@ -1374,6 +1394,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/gui/legend/origin_surface_legend_item.gd"
 }, {
+"base": "Node2D",
+"class": "OverlayButtonPanel",
+"language": "GDScript",
+"path": "res://src/gui/overlay_button_panel.gd"
+}, {
+"base": "Reference",
+"class": "OverlayButtonType",
+"language": "GDScript",
+"path": "res://src/gui/overlay_button_type.gd"
+}, {
 "base": "Node",
 "class": "OverlayMaskTransition",
 "language": "GDScript",
@@ -1532,7 +1562,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "PowerLine",
 "language": "GDScript",
-"path": "res://src/power_line.gd"
+"path": "res://src/power_lines/power_line.gd"
 }, {
 "base": "Screen",
 "class": "PrecomputePlatformGraphsScreen",
@@ -1612,7 +1642,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Rope",
 "language": "GDScript",
-"path": "res://src/rope.gd"
+"path": "res://src/power_lines/rope.gd"
 }, {
 "base": "Reference",
 "class": "RotatedShape",
@@ -2062,7 +2092,7 @@ _global_script_classes=[ {
 "base": "PowerLine",
 "class": "StaticPowerLine",
 "language": "GDScript",
-"path": "res://src/static_power_line.gd"
+"path": "res://src/power_lines/static_power_line.gd"
 }, {
 "base": "TextControlRow",
 "class": "StaticTextControlRow",
@@ -2638,6 +2668,8 @@ _global_script_class_icons={
 "Behavior": "",
 "BehaviorMoveResult": "",
 "Bot": "",
+"BotKeysOverlay": "",
+"BotSelector": "",
 "ButtonControlsControlRow": "",
 "CameraController": "",
 "CameraPanController": "",
@@ -2759,6 +2791,7 @@ _global_script_class_icons={
 "EdgesWithOneStepGroupItemController": "",
 "EdgesWithoutIncreasingJumpHeightGroupItemController": "",
 "ElementAnnotator": "",
+"EmptyStation": "",
 "ExclamationMarkAnnotator": "",
 "FailedEdgeAttempt": "",
 "FailedEdgeAttemptAnnotationElement": "",
@@ -2821,6 +2854,7 @@ _global_script_class_icons={
 "HighScoreControlRow": "",
 "HorizontalMovementUtils": "",
 "HsvRangeColorConfig": "",
+"Hud": "",
 "HudKeyValueBox": "",
 "HudKeyValueItemControlRow": "",
 "HudKeyValueList": "",
@@ -2893,6 +2927,8 @@ _global_script_class_icons={
 "OriginSurfaceAnnotationElement": "",
 "OriginSurfaceItemController": "",
 "OriginSurfaceLegendItem": "",
+"OverlayButtonPanel": "",
+"OverlayButtonType": "",
 "OverlayMaskTransition": "",
 "PaletteColorConfig": "",
 "PathBeatPrediction": "",

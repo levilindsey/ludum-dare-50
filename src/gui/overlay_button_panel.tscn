@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/gui/overlay_buttons/solar_overlay_button.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/overlay_buttons/battery_overlay_button.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/overlay_buttons/scanner_overlay_button.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/overlay_buttons/destroy_overlay_button.png" type="Texture" id=4]
+[ext_resource path="res://src/gui/overlay_button_panel.gd" type="Script" id=5]
+
+[node name="OverlayButtonPanel" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Buttons" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 1
+
+[node name="Destroy" type="TextureButton" parent="Buttons"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+
+[node name="Battery" type="TextureButton" parent="Buttons"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+
+[node name="Scanner" type="TextureButton" parent="Buttons"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+
+[node name="Solar" type="TextureButton" parent="Buttons"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 1 )

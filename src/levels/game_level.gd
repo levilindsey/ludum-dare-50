@@ -3,6 +3,8 @@ class_name GameLevel
 extends SurfacerLevel
 
 
+var bot_selector: BotSelector
+
 var command_center: CommandCenter
 
 var main_bot: ConstructionBot
@@ -17,12 +19,17 @@ var bots := []
 var power_lines := []
 
 
-#func _load() -> void:
-#    ._load()
+func _load() -> void:
+    ._load()
+    
+    Sc.gui.hud.set_up()
 
 
 func _start() -> void:
     ._start()
+    
+    bot_selector = BotSelector.new()
+    add_child(bot_selector)
     
     command_center = Sc.utils.get_child_by_type($Stations, CommandCenter)
     main_bot = Sc.utils.get_child_by_type(self, ConstructionBot)
@@ -45,6 +52,8 @@ func _destroy() -> void:
         bot.queue_free()
     for station in stations:
         station.queue_free()
+    for power_line in power_lines:
+        power_line.queue_free()
 
 
 #func _on_initial_input() -> void:
@@ -65,6 +74,13 @@ func _destroy() -> void:
 
 #func on_unpause() -> void:
 #    .on_unpause()
+
+
+func _on_bot_selection_changed(selected_bot) -> void:
+    for station in stations:
+        station._on_bot_selection_changed(selected_bot)
+    for bot in bots:
+        bot.set_is_selected(bot == selected_bot)
 
 
 func add_power_line(power_line: PowerLine) -> void:

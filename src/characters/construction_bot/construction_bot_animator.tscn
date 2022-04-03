@@ -343,38 +343,45 @@ animations = {
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 position = Vector2( 0, -16 )
 texture = ExtResource( 2 )
 hframes = 8
 
 [node name="ClimbUp" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 texture = ExtResource( 3 )
 hframes = 2
 
 [node name="ClimbDown" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 texture = ExtResource( 4 )
 hframes = 2
 
 [node name="CrawlOnCeiling" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 rotation = -1.5708
 texture = ExtResource( 4 )
 hframes = 2
 
 [node name="Rest" type="Sprite" parent="."]
+light_mask = 0
 position = Vector2( 0, -16 )
 texture = ExtResource( 7 )
 hframes = 8
 
 [node name="RestOnWall" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 texture = ExtResource( 8 )
 hframes = 2
 
 [node name="RestOnCeiling" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 rotation = 3.14159
 scale = Vector2( -1, 1 )
 texture = ExtResource( 5 )
@@ -382,17 +389,20 @@ hframes = 2
 
 [node name="JumpFall" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 position = Vector2( 0, -14 )
 texture = ExtResource( 9 )
 hframes = 2
 
 [node name="JumpRise" type="Sprite" parent="."]
 visible = false
+light_mask = 0
 position = Vector2( 0, -14 )
 texture = ExtResource( 6 )
 hframes = 2
 
 [node name="RESET" type="Sprite" parent="."]
+light_mask = 0
 position = Vector2( 0, -1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -37,7 +37,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 24, 23 )
+extents = Vector2( 24, 28 )
 
 [node name="SolarCollector" type="Area2D"]
 collision_layer = 4
@@ -56,5 +56,5 @@ texture = ExtResource( 2 )
 hframes = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -23 )
+position = Vector2( 0, -28 )
 shape = SubResource( 3 )

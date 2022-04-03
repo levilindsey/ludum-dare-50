@@ -17,6 +17,21 @@ func _get_members_to_destroy() -> Array:
 func _amend_manifest() -> void:
     ._amend_manifest()
     _override_manifest(_get_manifest_overrides())
+    
+    # Custom hacky overrides.
+    var excluded_keys := {
+        KEY_Q: true,
+        KEY_W: true,
+        KEY_E: true,
+        KEY_A: true,
+        KEY_S: true,
+        KEY_D: true,
+    }
+    for entry in Sc.manifest.input_map:
+        for event in entry.events:
+            if excluded_keys.has(event.physical_scancode):
+                entry.events.erase(event)
+                break
 
 
 func _configure_sub_modules() -> void:
