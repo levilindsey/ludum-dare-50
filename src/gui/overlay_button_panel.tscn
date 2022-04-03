@@ -13,6 +13,8 @@ script = ExtResource( 5 )
 mouse_filter = 1
 
 [node name="Destroy" type="TextureButton" parent="Buttons"]
+margin_right = 32.0
+margin_bottom = 32.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 4 )
@@ -21,8 +23,8 @@ expand = true
 
 [node name="Battery" type="TextureButton" parent="Buttons"]
 visible = false
-margin_right = 16.0
-margin_bottom = 16.0
+margin_right = 32.0
+margin_bottom = 32.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 2 )
@@ -31,8 +33,8 @@ expand = true
 
 [node name="Scanner" type="TextureButton" parent="Buttons"]
 visible = false
-margin_right = 16.0
-margin_bottom = 16.0
+margin_right = 32.0
+margin_bottom = 32.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 3 )
@@ -41,8 +43,8 @@ expand = true
 
 [node name="Solar" type="TextureButton" parent="Buttons"]
 visible = false
-margin_right = 16.0
-margin_bottom = 16.0
+margin_right = 32.0
+margin_bottom = 32.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )

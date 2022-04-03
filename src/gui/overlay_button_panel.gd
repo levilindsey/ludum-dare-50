@@ -28,7 +28,7 @@ var buttons := []
 
 var buttons_container: Control
 
-var station_level_position := Vector2.INF
+var station
 
 var is_mouse_in_region := false
 
@@ -46,10 +46,10 @@ func _ready() -> void:
 
 
 func set_up_controls(
-        station_position: Vector2,
+        station,
         station_area_position: Vector2,
         station_area_size: Vector2) -> void:
-    self.station_level_position = station_position
+    self.station = station
 
 
 func set_buttons(button_types: Array) -> void:
@@ -110,7 +110,13 @@ func _on_button_mouse_exited(button: TextureButton) -> void:
 
 func _on_button_pressed(button: TextureButton) -> void:
     Sc.utils.give_button_press_feedback()
-    emit_signal("button_pressed", _get_type_for_button(button))
+    var button_type := _get_type_for_button(button)
+    Sc.logger.print("OverlayButton pressed: button=%s, station=%s, p=%s" % [
+        OverlayButtonType.get_string(button_type),
+        station.get_name(),
+        station.position,
+       ])
+    emit_signal("button_pressed", button_type)
 
 
 func _get_type_for_button(button: TextureButton) -> int:
@@ -140,7 +146,7 @@ func _unhandled_input(event: InputEvent) -> void:
         var click_position: Vector2 = \
                 Sc.utils.get_level_touch_position(event)
         var next_is_mouse_in_region := \
-                click_position.distance_squared_to(station_level_position) < \
+                click_position.distance_squared_to(station.position) < \
                 _HOVER_DISTANCE_SQUARED
         if is_mouse_in_region != next_is_mouse_in_region:
             is_mouse_in_region = next_is_mouse_in_region

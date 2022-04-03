@@ -144,7 +144,7 @@ rope_attachment_offset = Vector2( 0, -36 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 31 )
-frame = 14
+frame = 27
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

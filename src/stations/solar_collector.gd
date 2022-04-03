@@ -15,3 +15,7 @@ func get_buttons(bot) -> Array:
     return [
         OverlayButtonType.DESTROY,
     ]
+
+
+func get_name() -> String:
+    return "solar"

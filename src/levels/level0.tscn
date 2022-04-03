@@ -3,11 +3,11 @@
 [ext_resource path="res://src/levels/game_level.gd" type="Script" id=1]
 [ext_resource path="res://src/tiles/collidable_tilemap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/stations/empty_station.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/surfacer/src/tiles/surface_enablement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/tiles/collidable_tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://addons/surface_tiler/src/corner_match_inner_tilemap.gd" type="Script" id=7]
 [ext_resource path="res://src/stations/command_center.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/stations/solar_collector.tscn" type="PackedScene" id=9]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 1 )
@@ -41,5 +41,17 @@ z_index = 1
 
 [node name="CommandCenter" parent="Stations" instance=ExtResource( 8 )]
 
-[node name="SolarCollector" parent="Stations" instance=ExtResource( 9 )]
-position = Vector2( 128, -384 )
+[node name="EmptyStation" parent="Stations" instance=ExtResource( 4 )]
+position = Vector2( 640, 256 )
+
+[node name="EmptyStation2" parent="Stations" instance=ExtResource( 4 )]
+position = Vector2( 256, 128 )
+
+[node name="EmptyStation3" parent="Stations" instance=ExtResource( 4 )]
+position = Vector2( -96, -288 )
+
+[node name="EmptyStation4" parent="Stations" instance=ExtResource( 4 )]
+position = Vector2( 448, -448 )
+
+[node name="EmptyStation5" parent="Stations" instance=ExtResource( 4 )]
+position = Vector2( -544, 256 )

@@ -11,3 +11,7 @@ func get_buttons(bot) -> Array:
     return [
         OverlayButtonType.SOLAR_COLLECTOR,
     ]
+
+
+func get_name() -> String:
+    return "empty"
