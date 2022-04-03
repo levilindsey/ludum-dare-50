@@ -3230,7 +3230,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ludum Dare 50"
+config/name="Meteor Power"
 run/main_scene="res://src/global/main.tscn"
 boot_splash/image="res://addons/scaffolder/assets/images/logos/godot_logo_splash.png"
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )

@@ -20,10 +20,8 @@ extends Node2D
 # - Add a steady energy drain for bots just existing.
 # - Add a energy hit for damaged wires.
 
-# - 2:00
 # - Add music
 # - Add sfx
-# - Add icon
 # - Add better level and playtest.
 # - Check notes
 
@@ -33,10 +31,10 @@ var WAVE_PERIOD := 40.0
 var WAVE_DURATION_START := 10.0
 var WAVE_DURATION_DELTA := 10.0
 
-var METEOR_WAVE_FREQUENCY_START := 1.6
+var METEOR_WAVE_FREQUENCY_START := 8.0
 var METEOR_WAVE_FREQUENCY_MULTIPLIER := 1.5
 
-var NON_WAVE_METEOR_FREQUENCY_START := 0.6
+var NON_WAVE_METEOR_FREQUENCY_START := 1.0
 var NON_WAVE_METEOR_FREQUENCY_MULTIPLIER := 2.0
 
 var LARGE_METEOR_RATIO := 0.2

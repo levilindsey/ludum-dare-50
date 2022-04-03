@@ -56,13 +56,13 @@ var _metadata := {
 }
 
 var _music_manifest := [
-    # {
-    #     name = "my_music",
-    #     path_prefix = "res://assets/music/",
-    #     volume_db = 0.0,
-    #     bpm = 75.0,
-    #     meter = 4,
-    # },
+    {
+        name = "just_keep_building",
+        path_prefix = "res://assets/music/",
+        volume_db = -9.0,
+        bpm = 75.0,
+        meter = 4,
+    },
 ]
 
 var _sounds_manifest := [
@@ -81,6 +81,57 @@ var _sounds_manifest := [
         volume_db = 0.0,
         path_prefix = "",
     },
+    
+    {
+        name = "bot_land",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "button",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "cadence_lose",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "command_acc",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "command_finished",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "jump",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "meteor_land",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "wire_break",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "menu_select",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
+    {
+        name = "menu_select_fancy",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
 ]
 
 var _audio_manifest := {
@@ -94,19 +145,19 @@ var _audio_manifest := {
     default_music_file_suffix = ".ogg",
     default_music_bus_index = 2,
     
-    godot_splash_sound = "achievement",
+    godot_splash_sound = "cadence_lose",
     developer_splash_sound = "single_cat_snore",
-    level_end_sound_win = "cadence_win",
+    level_end_sound_win = "cadence_lose",
     level_end_sound_lose = "cadence_lose",
     
-    main_menu_music = "on_a_quest",
-    game_over_music = "pause_menu",
-    pause_menu_music = "pause_menu",
-    default_level_music = "on_a_quest",
+    main_menu_music = "just_keep_building",
+    game_over_music = "just_keep_building",
+    pause_menu_music = "just_keep_building",
+    default_level_music = "just_keep_building",
     
     pauses_level_music_on_pause = true,
     
-    are_beats_tracked_by_default = true,
+    are_beats_tracked_by_default = false,
     
     is_arbitrary_music_speed_change_supported = true,
     is_music_speed_scaled_with_time_scale = true,

@@ -280,7 +280,7 @@ func _on_station_destroyed(station: Station) -> void:
 
 
 func get_music_name() -> String:
-    return "on_a_quest"
+    return "just_keep_building"
 
 
 func get_slow_motion_music_name() -> String:

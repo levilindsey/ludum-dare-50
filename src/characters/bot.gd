@@ -135,6 +135,7 @@ func move_to_attach_power_line(
 
 func _on_reached_first_station_for_power_line() -> void:
     # FIXME: Play sound and particles
+    Sc.audio.play_sound("command_acc")
     Sc.logger.print(
         "Bot._on_reached_first_station_for_power_line: bot=%s, station=%s, p=%s" % [
             self.character_name,
@@ -159,6 +160,7 @@ func _on_reached_first_station_for_power_line() -> void:
 
 func _on_reached_second_station_for_power_line() -> void:
     # FIXME: Play sound and particles
+    Sc.audio.play_sound("command_finished")
     Sc.logger.print(
         "Bot._on_reached_second_station_for_power_line: bot=%s, station=%s, p=%s" % [
             self.character_name,
@@ -190,6 +192,7 @@ func move_to_build_station(
 
 func _on_reached_station_to_build() -> void:
     # FIXME: Play sound and particles
+    Sc.audio.play_sound("command_finished")
     assert(is_instance_valid(target_station))
     Sc.logger.print(
         "Bot._on_reached_station_to_build: bot=%s, station=%s, p=%s" % [
@@ -212,6 +215,7 @@ func move_to_destroy_station(station: Station) -> void:
 
 func _on_reached_station_to_destroy() -> void:
     # FIXME: Play sound and particles
+    Sc.audio.play_sound("command_finished")
     Sc.logger.print(
         "Bot._on_reached_station_to_destroy: bot=%s, station=%s, p=%s" % [
             self.character_name,
@@ -236,6 +240,7 @@ func move_to_build_bot(
 
 func _on_reached_station_to_build_bot() -> void:
     # FIXME: Play sound and particles
+    Sc.audio.play_sound("command_finished")
     Sc.logger.print(
         "Bot._on_reached_station_to_build_bot: bot=%s, bot_to_build=%s, p=%s" % [
             self.character_name,
@@ -270,6 +275,8 @@ func _stop_nav() -> void:
 
 
 func _on_command_started(command: int) -> void:
+    Sc.audio.play_sound("command_acc")
+    
     self.command = command
     is_active = true
     is_new = false
@@ -368,12 +375,12 @@ func _on_reached_target_station() -> void:
 
 func _process_sounds() -> void:
     if just_triggered_jump:
-        Sc.audio.play_sound("test_character_jump")
+        Sc.audio.play_sound("jump")
     
     if surface_state.just_left_air:
-        Sc.audio.play_sound("test_character_land")
+        Sc.audio.play_sound("bot_land")
     elif surface_state.just_touched_surface:
-        Sc.audio.play_sound("test_character_hit_surface")
+        Sc.audio.play_sound("bot_land")
 
 
 func _get_button_type_for_station_type(station_type: String) -> int:
