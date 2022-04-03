@@ -224,6 +224,43 @@ var _images_manifest_pixelated := {
             preload("res://addons/scaffolder/assets/images/gui/icons/stop_normal.png"),
 }
 
+var _styles_manifest_pixelated := {
+    focus_border_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/focus_border.png"),
+    button_pressed_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/button_pressed.png"),
+    button_disabled_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/button_hover.png"),
+    button_hover_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/button_hover.png"),
+    button_normal_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/button_normal.png"),
+    dropdown_pressed_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/dropdown_pressed.png"),
+    dropdown_disabled_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/dropdown_hover.png"),
+    dropdown_hover_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/dropdown_hover.png"),
+    dropdown_normal_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/dropdown_normal.png"),
+    scroll_track_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/scroll_track.png"),
+    scroll_grabber_pressed_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/scroll_grabber_pressed.png"),
+    scroll_grabber_hover_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/scroll_grabber_hover.png"),
+    scroll_grabber_normal_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/scroll_grabber_normal.png"),
+    slider_track_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/slider_track.png"),
+    overlay_panel_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/overlay_panel.png"),
+#    notification_panel_nine_patch = \
+#            preload("res://assets/images/gui/nine_patch/notification_panel.png"),
+    hud_panel_nine_patch = \
+            preload("res://assets/images/gui/nine_patch/overlay_panel.png"),
+}
+
 var _gui_manifest := {
     third_party_license_text = \
             ThirdPartyLicenses.TEXT + \
@@ -318,6 +355,7 @@ var _additive_overrides := {
         metadata = _metadata,
         audio_manifest = _audio_manifest,
         images_manifest_pixelated = _images_manifest_pixelated,
+        styles_manifest_pixelated = _styles_manifest_pixelated,
         character_manifest = _character_manifest,
         gui_manifest = _gui_manifest,
         level_config_class = LevelConfig,
