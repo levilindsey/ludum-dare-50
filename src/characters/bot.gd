@@ -67,7 +67,6 @@ func _init() -> void:
     light.range_layer_max = 100
     add_child(light)
     _update_highlight_mode()
-    set_can_be_player_character(true)
 
 
 func _on_level_started() -> void:

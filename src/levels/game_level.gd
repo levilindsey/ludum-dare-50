@@ -34,6 +34,10 @@ func _start() -> void:
     command_center = Sc.utils.get_child_by_type($Stations, CommandCenter)
     main_bot = Sc.utils.get_child_by_type(self, ConstructionBot)
     
+    main_bot.set_can_be_player_character(true)
+    # FIXME: ---------------
+    main_bot.set_is_player_control_active(true)
+    
     Sc.level._on_station_created(command_center)
     Sc.level._on_bot_created(main_bot)
     
@@ -97,6 +101,7 @@ func _on_power_line_destroyed(power_line: PowerLine) -> void:
 
 func add_bot(bot: Bot) -> void:
     $Bots.add_child(bot)
+    main_bot.set_can_be_player_character(true)
     _on_bot_created(bot)
 func remove_bot(bot: Bot) -> void:
     _on_bot_destroyed(bot)
