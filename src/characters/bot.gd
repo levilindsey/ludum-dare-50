@@ -326,7 +326,7 @@ func _on_started_colliding_deferred(
             if target_station == target:
                 _on_reached_target_station()
         "meteors":
-            pass
+            target._on_collided_with_bot(self)
         _:
             Sc.logger.error("Bot._on_started_colliding: layer_names=%s" % \
                     str(layer_names))

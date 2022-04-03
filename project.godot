@@ -1299,6 +1299,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/screens/main_menu_screen.gd"
 }, {
+"base": "Area2D",
+"class": "Meteor",
+"language": "GDScript",
+"path": "res://src/levels/meteor.gd"
+}, {
+"base": "Node2D",
+"class": "MeteorController",
+"language": "GDScript",
+"path": "res://src/levels/meteor_controller.gd"
+}, {
 "base": "CheckboxControlRow",
 "class": "MetronomeControlRow",
 "language": "GDScript",
@@ -2938,6 +2948,8 @@ _global_script_class_icons={
 "LockAnimation": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_placeholder.png",
 "Main": "res://addons/scaffolder/assets/images/editor_icons/star.png",
 "MainMenuScreen": "",
+"Meteor": "",
+"MeteorController": "",
 "MetronomeControlRow": "",
 "MoveBackAndForthBehavior": "res://addons/surfacer/assets/images/editor_icons/move_back_and_forth_behavior.png",
 "MovementParameters": "res://addons/surfacer/assets/images/editor_icons/movement_params.png",
@@ -3266,6 +3278,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="bots"
 2d_physics/layer_5="stations"
 2d_physics/layer_6="meteors"
+2d_physics/layer_7="wires"
 
 [logging]
 
@@ -3280,4 +3293,4 @@ common/physics_fps=60.0
 quality/intended_usage/framebuffer_allocation=1
 quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
-environment/default_clear_color=Color( 0.270588, 0.239216, 0.188235, 1 )
+environment/default_clear_color=Color( 0.0431373, 0.0117647, 0.105882, 1 )

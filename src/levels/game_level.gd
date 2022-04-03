@@ -16,6 +16,8 @@ var command_center: CommandCenter
 
 var main_bot: ConstructionBot
 
+var meteor_controller: MeteorController
+
 # Array<Station>
 var stations := []
 
@@ -57,6 +59,9 @@ func _start() -> void:
         station._on_level_started()
     for bot in bots:
         bot._on_level_started()
+    
+    meteor_controller = MeteorController.new()
+    self.add_child(meteor_controller)
 
 
 func _destroy() -> void:
@@ -111,6 +116,11 @@ const ENERGY_COST_PER_BUTTON := {
     OverlayButtonType.BUILD_LINE_RUNNER_BOT: 1000,
     OverlayButtonType.BUILD_REPAIR_BOT: 1000,
     OverlayButtonType.BUILD_BARRIER_BOT: 1000,
+    
+    OverlayButtonType.DYNAMIC_POWER_LINE_HIT: 20,
+    OverlayButtonType.STATIC_POWER_LINE_HIT: 10,
+    OverlayButtonType.STATION_HIT: 50,
+    OverlayButtonType.BOT_HIT: 70,
 }
 
 
@@ -262,3 +272,27 @@ func get_music_name() -> String:
 func get_slow_motion_music_name() -> String:
     # FIXME: Add slo-mo music
     return ""
+
+
+func get_combined_tile_map_region() -> Rect2:
+    var tile_maps := \
+            get_tree().get_nodes_in_group(SurfacesTilemap.GROUP_NAME_SURFACES)
+    assert(!tile_maps.empty())
+    var tile_map: TileMap = tile_maps[0]
+    var tile_map_region := get_tile_map_bounds_in_world_coordinates(tile_map)
+    for i in range(1, tile_maps.size()):
+        tile_map = tile_maps[i]
+        tile_map_region = tile_map_region.merge(
+                get_tile_map_bounds_in_world_coordinates(tile_map))
+    return tile_map_region
+
+
+static func get_tile_map_bounds_in_world_coordinates(
+        tile_map: TileMap) -> Rect2:
+    var used_rect := tile_map.get_used_rect()
+    var cell_size := tile_map.cell_size
+    return Rect2(
+            tile_map.position.x + used_rect.position.x * cell_size.x,
+            tile_map.position.y + used_rect.position.y * cell_size.y,
+            used_rect.size.x * cell_size.x,
+            used_rect.size.y * cell_size.y)

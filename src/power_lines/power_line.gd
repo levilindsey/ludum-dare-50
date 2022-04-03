@@ -22,6 +22,7 @@ var health := 1.0
 
 var _vertices := []
 
+var collision_area: Area2D
 
 
 func _init(
@@ -31,6 +32,24 @@ func _init(
     self.start_attachment = start_attachment
     self.end_attachment = end_attachment
     self.mode = mode
+    _create_collision_area()
+
+
+func _create_collision_area() -> void:
+    collision_area = Area2D.new()
+    collision_area.set_meta("PowerLine", self)
+    collision_area.collision_layer = \
+            Sc.utils.get_physics_layer_bitmask_from_name("wires")
+    collision_area.collision_mask = 0
+    collision_area.monitoring = false
+    collision_area.monitorable = true
+    var collision_shape := CollisionShape2D.new()
+    var shape := SegmentShape2D.new()
+    shape.a
+    shape.b
+    collision_shape.shape = shape
+    collision_area.add_child(collision_shape)
+    self.add_child(collision_area)
 
 
 func _draw_polyline() -> void:
@@ -47,3 +66,7 @@ func _draw_polyline() -> void:
             Rope.DISTANCE_BETWEEN_NODES * 0.5,
             2.0,
             width)
+
+
+func _on_hit_by_meteor() -> void:
+    pass

@@ -20,6 +20,11 @@ enum {
     BUILD_LINE_RUNNER_BOT,
     BUILD_REPAIR_BOT,
     BUILD_BARRIER_BOT,
+    
+    DYNAMIC_POWER_LINE_HIT,
+    STATIC_POWER_LINE_HIT,
+    STATION_HIT,
+    BOT_HIT,
 }
 
 
@@ -47,6 +52,14 @@ static func get_string(type: int) -> String:
             return "BUILD_REPAIR_BOT"
         BUILD_BARRIER_BOT:
             return "BUILD_BARRIER_BOT"
+        DYNAMIC_POWER_LINE_HIT:
+            return "DYNAMIC_POWER_LINE_HIT"
+        STATIC_POWER_LINE_HIT:
+            return "STATIC_POWER_LINE_HIT"
+        STATION_HIT:
+            return "STATION_HIT"
+        BOT_HIT:
+            return "BOT_HIT"
         _:
             Sc.logger.error("OverlayButtonType.get_string")
             return ""

@@ -64,3 +64,9 @@ func _update_vertices() -> void:
 func _draw() -> void:
     _update_vertices()
     _draw_polyline()
+
+
+func _on_hit_by_meteor() -> void:
+    Sc.logger.print("DynamicPowerLine._on_hit_by_meteor")
+    end_attachment.stop()
+    Sc.level.deduct_energy_for_action(OverlayButtonType.DYNAMIC_POWER_LINE_HIT)
