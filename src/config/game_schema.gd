@@ -160,17 +160,15 @@ var _images_manifest_pixelated := {
     slider_tick_sizes = \
             ScaffolderImages.DEFAULT_SLIDER_TICK_PIXEL_SIZES,
     
-    app_logo = preload(
-            "res://addons/scaffolder/assets/images/logos/scaffolder_logo.png"),
+    app_logo = preload("res://assets/images/logos/logo.png"),
     app_logo_scale = 1.0,
     
     developer_logo = preload(
-            "res://addons/scaffolder/assets/images/logos/snoring_cat_logo_about.png"),
+            "res://assets/images/logos/levi_logo_about.png"),
     developer_splash = preload(
-            "res://addons/scaffolder/assets/images/logos/snoring_cat_logo_splash.png"),
+            "res://assets/images/logos/levi_logo_splash.png"),
     
-    go_normal = preload(
-            "res://addons/scaffolder/assets/images/gui/icons/go_normal.png"),
+    go_normal = preload("res://assets/images/gui/go_icon.png"),
     go_scale = 1.5,
     
     about_circle_pressed = preload(
