@@ -1284,7 +1284,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/level_select/lock_animation.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Main",
 "language": "GDScript",
 "path": "res://src/global/main.gd"
@@ -2945,7 +2945,7 @@ _global_script_class_icons={
 "LevelSession": "",
 "LoadingImage": "",
 "LockAnimation": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_placeholder.png",
-"Main": "res://addons/scaffolder/assets/images/editor_icons/star.png",
+"Main": "",
 "MainMenuScreen": "",
 "Meteor": "",
 "MeteorController": "",
