@@ -1,14 +1,15 @@
-# Ludum Dare 50
+# Meteor Power
 
-> TODO: Add a cover image.
+<p align="center">
+  <img src="assets/images/cover_art.png"
+       alt="A cover image for the Meteor Power game.">
+</p>
 
 > _**[Play the game!](https://levi.dev/ludum-dare-50)**_
 
-_TODO: Game plot description / call-to-action_
+> A point-and-click AI platformer.
 
-TODO: Game technical description
-
-TODO: Search/replace all instances of bootstrap with the app name.
+> Build solar stations, connect power lines, and collect more energy before you run out and overwhelmed by meteors!
 
 ## 👨‍💻 The jam
 
@@ -23,7 +24,15 @@ I worked solo and created everything during the event. Except of course for my S
 
 ### 💡 The theme
 
-> TODO: Describe the theme and how my game fits it.
+"Delay the inevitable"
+
+## 🎮 Controls
+
+-   Mouse and keyboard.
+-   A/S/D/Q/W/E to select a bot.
+-   Left-click on a platform to move the bot.
+-   Left-click a station button to do that command.
+-   Right-click to cancel a command.
 
 ## 💿 Software used
 
@@ -51,9 +60,11 @@ To learn more about how the code works, checkout the [Surfacer](https://github.c
     -   [addons/surfacer/src/config/surfacer_third_party_licenses.gd](https://github.com/SnoringCatGames/surfacer/blob/master/src/config/surfacer_third_party_licenses.gd)
     -   [src/config/third_party_licenses.gd](./src/config/third_party_licenses.gd)
 
-> TODO: Add a loading GIF.
+## I livestreamed the development on Twitch!
+
+https://www.twitch.tv/ukulelefury
 
 <p align="center">
-  <img src="assets/images/gui/loading.gif"
+  <img src="assets/images/characters/construction_bot_walking_256.gif"
        alt="An animated GIF.">
 </p>
