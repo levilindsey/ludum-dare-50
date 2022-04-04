@@ -58,9 +58,10 @@ func _on_Meteor_body_entered(body) -> void:
 
 
 func _on_Meteor_area_entered(area) -> void:
-    if area is Station:
+    if area is Station and !area is EmptyStation:
 #        Sc.logger.print("Meteor hit station")
         Sc.level.deduct_energy_for_action(OverlayButtonType.STATION_HIT)
+        area._on_hit_by_meteor()
         Sc.audio.play_sound("meteor_land")
         _destroy()
     elif area.has_meta("PowerLine"):

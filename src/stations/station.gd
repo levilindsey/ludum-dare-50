@@ -19,6 +19,8 @@ var connections := {}
 
 var is_connected_to_command_center := false
 
+var meteor_hit_count := 0
+
 
 func _ready() -> void:
     self.collision_shape = Sc.utils.get_child_by_type(self, CollisionShape2D)
@@ -107,20 +109,36 @@ func _check_is_connected_to_command_center() -> void:
             _on_connected_to_command_center()
         else:
             _on_disconnected_from_command_center()
+        _update_all_connections_connected_to_command_center_recursive(
+                is_connected_to_command_center, self, {})
 
 
 func _check_is_connected_to_command_center_recursive(
         station: Station,
         visited_stations: Dictionary) -> bool:
     visited_stations[station] = true
-    for other_station in connections:
+    for other_station in station.connections:
         if other_station.get_name() == "command":
             return true
         if visited_stations.has(other_station):
             continue
-        _check_is_connected_to_command_center_recursive(
-                other_station, visited_stations)
+        if _check_is_connected_to_command_center_recursive(
+                other_station, visited_stations):
+            return true
     return false
+
+
+func _update_all_connections_connected_to_command_center_recursive(
+        is_connected_to_command_center: bool,
+        station: Station,
+        visited_stations: Dictionary) -> void:
+    station.is_connected_to_command_center = is_connected_to_command_center
+    visited_stations[station] = true
+    for other_station in station.connections:
+        if visited_stations.has(other_station):
+            continue
+        _update_all_connections_connected_to_command_center_recursive(
+                is_connected_to_command_center, other_station, visited_stations)
 
 
 func _on_connected_to_command_center() -> void:
@@ -129,3 +147,7 @@ func _on_connected_to_command_center() -> void:
 
 func _on_disconnected_from_command_center() -> void:
     pass
+
+
+func _on_hit_by_meteor() -> void:
+    meteor_hit_count += 1

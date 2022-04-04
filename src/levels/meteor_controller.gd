@@ -31,11 +31,11 @@ var WAVE_PERIOD := 40.0
 var WAVE_DURATION_START := 10.0
 var WAVE_DURATION_DELTA := 10.0
 
-var METEOR_WAVE_FREQUENCY_START := 8.0
+var METEOR_WAVE_FREQUENCY_START := 0.8
 var METEOR_WAVE_FREQUENCY_MULTIPLIER := 1.5
 
-var NON_WAVE_METEOR_FREQUENCY_START := 1.0
-var NON_WAVE_METEOR_FREQUENCY_MULTIPLIER := 2.0
+var NON_WAVE_METEOR_FREQUENCY_START := 0.1
+var NON_WAVE_METEOR_FREQUENCY_MULTIPLIER := 1.5
 
 var LARGE_METEOR_RATIO := 0.2
 
@@ -57,6 +57,7 @@ func _init() -> void:
     start_time = Sc.time.get_scaled_play_time()
     level_region = Sc.level.get_combined_tile_map_region()
     next_wave_start_time = start_time + WAVE_PERIOD
+    next_meteor_time = 5.0
 
 
 func _physics_process(delta: float) -> void:

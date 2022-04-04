@@ -3,7 +3,7 @@ class_name SolarCollector
 extends Station
 
 
-var seconds_per_one_energy_value := 0.18
+var seconds_per_one_energy_value := 0.05
 var total_seconds := 0.0
 
 var start_time := INF
@@ -56,3 +56,9 @@ func _on_disconnected_from_command_center() -> void:
     $Dark.visible = true
     $Shine.visible = false
     $AnimationPlayer.play("dark")
+
+
+func _on_hit_by_meteor() -> void:
+    ._on_hit_by_meteor()
+    if meteor_hit_count >= 3:
+        Sc.level.replace_station(self, "empty")

@@ -15,22 +15,22 @@ const ENERGY_COST_PER_BUTTON := {
     OverlayButtonType.MOVE: 1,
     OverlayButtonType.DESTROY: 10,
     
-    OverlayButtonType.RUN_WIRE: 40,
+    OverlayButtonType.RUN_WIRE: 30,
     
     OverlayButtonType.COMMAND_CENTER: 500,
     OverlayButtonType.SOLAR_COLLECTOR: 300,
     OverlayButtonType.SCANNER_STATION: 500,
     OverlayButtonType.BATTERY_STATION: 500,
     
-    OverlayButtonType.BUILD_CONSTRUCTOR_BOT: 800,
+    OverlayButtonType.BUILD_CONSTRUCTOR_BOT: 200,
     OverlayButtonType.BUILD_LINE_RUNNER_BOT: 1000,
     OverlayButtonType.BUILD_REPAIR_BOT: 1000,
     OverlayButtonType.BUILD_BARRIER_BOT: 1000,
     
-    OverlayButtonType.DYNAMIC_POWER_LINE_HIT: 100,
-    OverlayButtonType.STATIC_POWER_LINE_HIT: 80,
-    OverlayButtonType.STATION_HIT: 120,
-    OverlayButtonType.BOT_HIT: 150,
+    OverlayButtonType.DYNAMIC_POWER_LINE_HIT: 20,
+    OverlayButtonType.STATIC_POWER_LINE_HIT: 10,
+    OverlayButtonType.STATION_HIT: 40,
+    OverlayButtonType.BOT_HIT: 80,
     
     OverlayButtonType.BOT_ALIVE: 1,
 }
