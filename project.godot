@@ -1284,7 +1284,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/level_select/lock_animation.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "Main",
 "language": "GDScript",
 "path": "res://src/global/main.gd"
@@ -2945,7 +2945,7 @@ _global_script_class_icons={
 "LevelSession": "",
 "LoadingImage": "",
 "LockAnimation": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_placeholder.png",
-"Main": "",
+"Main": "res://addons/scaffolder/assets/images/editor_icons/star.png",
 "MainMenuScreen": "",
 "Meteor": "",
 "MeteorController": "",
@@ -3234,7 +3234,7 @@ config/name="Meteor Power"
 run/main_scene="res://src/global/main.tscn"
 boot_splash/image="res://addons/scaffolder/assets/images/logos/godot_logo_splash.png"
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
-config/icon="res://assets/images/characters/icon_256.png"
+config/icon="res://assets/images/background/icon_64.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
 

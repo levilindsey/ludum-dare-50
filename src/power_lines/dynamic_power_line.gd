@@ -68,7 +68,14 @@ func _draw() -> void:
 
 func _on_hit_by_meteor() -> void:
     Sc.logger.print("DynamicPowerLine._on_hit_by_meteor")
-    end_attachment.stop()
+    if end_attachment.has_method("stop"):
+        # Is Bot.
+        end_attachment.stop()
+        Sc.level.deduct_energy_for_action(OverlayButtonType.DYNAMIC_POWER_LINE_HIT)
+    else:
+        # Is Station.
+        start_attachment.remove_connection(end_attachment)
+        end_attachment.remove_connection(start_attachment)
+        Sc.level.deduct_energy_for_action(OverlayButtonType.STATIC_POWER_LINE_HIT)
     Sc.audio.play_sound("wire_break")
-    Sc.level.deduct_energy_for_action(OverlayButtonType.DYNAMIC_POWER_LINE_HIT)
     Sc.level.remove_power_line(self)

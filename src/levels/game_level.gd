@@ -270,8 +270,16 @@ func replace_station(
 func add_station(station: Station) -> void:
     $Stations.add_child(station)
     _on_station_created(station)
+
 func remove_station(station: Station) -> void:
+    # Remove any attached power lines.
+    for power_line in power_lines:
+        if power_line.start_attachment == station or \
+                power_line.end_attachment == station:
+            power_line.on_attachment_removed()
+            Sc.level.remove_power_line(power_line)
     _on_station_destroyed(station)
+
 func _on_station_created(station: Station) -> void:
     self.stations.push_back(station)
 func _on_station_destroyed(station: Station) -> void:

@@ -86,7 +86,7 @@ func get_position_along_surface(
 
 func add_connection(other_station: Station) -> void:
     if connections.has(other_station):
-        Sc.logger.warning("Station.add_connection")
+#        Sc.logger.warning("Station.add_connection")
         return
     connections[other_station] = true
     _check_is_connected_to_command_center()
@@ -94,7 +94,7 @@ func add_connection(other_station: Station) -> void:
 
 func remove_connection(other_station: Station) -> void:
     if !connections.has(other_station):
-        Sc.logger.warning("Station.remove_connection")
+#        Sc.logger.warning("Station.remove_connection")
         return
     connections.erase(other_station)
     _check_is_connected_to_command_center()

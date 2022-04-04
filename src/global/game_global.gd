@@ -57,6 +57,10 @@ func _load_state() -> void:
     ._load_state()
 
 
+func _disable_music() -> void:
+    Sc.audio.is_music_enabled = false
+
+
 # This method is useful for defining parameters that are likely to change
 # between builds or between development and production environments.
 func _get_manifest_overrides() -> Array:
@@ -64,6 +68,7 @@ func _get_manifest_overrides() -> Array:
             Sc.modes.get_is_active("release", "local_dev") and \
             OS.is_debug_build()
     var playtest: bool = Sc.modes.get_is_active("release", "playtest")
+    var recording: bool = Sc.modes.get_is_active("release", "recording")
     var is_using_threads: bool = Sc.modes.get_is_active("threading", "enabled")
     var is_using_pixel_style: bool = \
             Sc.modes.get_is_active("ui_smoothness", "pixelated")
@@ -71,9 +76,13 @@ func _get_manifest_overrides() -> Array:
             Sc.modes.get_is_active("annotations", "emphasized")
     
     var moves_debug_game_window_to_other_monitor := false
-    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.default
+#    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.default
 #    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.full_screen
-#    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.google_ads_portrait
+    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.youtube
+    
+    if recording:
+#        debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.youtube
+        call_deferred("call_deferred", "call_deferred", "call_deferred", "call_deferred", "call_deferred", "call_deferred", "call_deferred", "call_deferred", "_disable_music")
     
     var overrides := []
     Sc.utils.concat(overrides, _get_common_overrides_for_release_mode())
@@ -81,8 +90,6 @@ func _get_manifest_overrides() -> Array:
     Sc.utils.concat(overrides, [
         ["Sc.manifest.metadata.app_version", "0.0.1"],
         
-        ["Sc.manifest.metadata.debug", debug, "release"],
-        ["Sc.manifest.metadata.playtest", playtest, "release"],
         ["Sc.manifest.metadata.rng_seed", 723],
         ["Sc.manifest.metadata.pauses_on_focus_out", true],
         ["Sc.manifest.metadata.also_prints_to_stdout", true],

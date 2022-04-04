@@ -72,3 +72,14 @@ func _draw_polyline() -> void:
 
 func _on_hit_by_meteor() -> void:
     pass
+
+
+func on_attachment_removed() -> void:
+    if start_attachment.has_method("remove_connection") and \
+            end_attachment.has_method("remove_connection"):
+        # Is connecting two stations.
+        start_attachment.remove_connection(end_attachment)
+        end_attachment.remove_connection(start_attachment)
+    if end_attachment.has_method("stop"):
+        # Is held by Bot.
+        end_attachment.stop()
