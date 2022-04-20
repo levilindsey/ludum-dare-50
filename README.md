@@ -7,6 +7,8 @@
 
 > _**[Play the game!](https://levi.dev/ludum-dare-50)**_
 
+> I continued development of this game in a separate repo at [github.com/SnoringCatGames/meteor_power](https://github.com/SnoringCatGames/meteor_power).
+
 > A point-and-click AI platformer.
 
 > Build solar stations, connect power lines, and collect more energy before you run out and overwhelmed by meteors!
